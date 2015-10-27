@@ -1,0 +1,29 @@
+body {
+
+  font-size: 14px;
+  line-height: 1.2;
+  color: #333333;
+  font-weight: normal;
+  text-transform: uppercase;
+  font-family: "PT Sans", Arial, Helvetica, sans-serif;
+}
+
+h1 {
+	font-size: 21px;
+  line-height: 26px;
+  color: #000000;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: "PT Sans", Arial, Helvetica, sans-serif;
+}
+
+h2 {
+	font-size: 21px;
+  line-height: 21px;
+  color: #000000;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: "PT Sans", Arial, Helvetica, sans-serif;
+
+}
+
