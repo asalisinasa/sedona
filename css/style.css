@@ -314,9 +314,52 @@ h2 {
   width: 315px;
 }
 .serch-sortby {
+  display: inline-block;
   width: 100%;
   height: 87px;
-  padding: 0 6%;
+  padding: 30px 6%;
+  border-bottom: 1px solid #e5e5e5;
+}
+.sort {
+  display: inline-block;
+}
+.found {
+  display: inline-block;
+  margin-right: 50px;
+  font-size: 21px;
+  line-height: 26px;
+  font-weight: bold;
+}
+.sort-title {
+  display: inline-block;
+  margin-right: 40px;
+  font-size: 12px;
+  line-height: 18px;
+  color: #000000;
+}
+.sort-by {
+  display: inline-block;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  font-size: 12px;
+  line-height: 18px;
+  
+}
+.sort-by .sort-by-item {
+  display: inline-block;
+  margin-right: 30px;
+}
+.sort-by-item a {
+  color: #b1b1b1;
+  text-decoration: none;
+  /* не работает */
+  text-decoration-style: dotted;
+  text-decoration-color: #81b3d2;
+}
+.switch {
+  display: inline-block;
+  margin-right: 503px;
 }
 
 
