@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-
 <html>
 
 <head>
   <meta charset="utf-8">
   <title>Седона</title>
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="css/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
@@ -15,22 +16,19 @@
         <a href="#"><img src="img/logo.png" width="138" height="70" alt="Седона"></a>
       </div>
 
-        <!-- Тут лучше добавить еще по одному классу, но чтоб они были одинаковыми. 
-        И плюс твои доп. классы оставить, они пригодятся для выравнивания потом. 
-        Активный класс тоже лучше прописывать у li, так проще стилизовать будет -->
       <nav class="main-nav clearfix">
         <ul>
-          <li class="main-nav_info menu">
+          <li class="main-nav_info main-nav_item">
             <a href="#">ИНФОРМАЦИЯ</a>
-          </li>
-          <li class="main-nav_photo menu">
+          </li><!--
+           --><li class="main-nav_photo main-nav_item">
             <a href="#">ФОТО И ВИДЕО</a>
-          </li>
-          <li class="main-nav_map menu">
-            <a href="#">КАРТА ШТАТА</a>
-          </li>
-          <li class="main-nav_hotels menu active">
+          </li><!--
+          --><li class="main-nav_hotels main-nav_item active">
             <a href="#">ГОСТИНИЦЫ</a>
+          </li><!--
+          --><li class="main-nav_map main-nav_item">
+            <a href="#">КАРТА ШТАТА</a>
           </li>
         </ul>
       </nav>
@@ -64,22 +62,17 @@
       </section>
 
       <section class="features-row-2 clearfix">
-        <!-- Я писала в прошлый раз: 
-        "Смотри, у тебя у этих трех колонок одинаковая ширина и вообще все остальные свойства. 
-        Почему бы не сделать их одним классом, чтобы не писать в css три раза одно и то же? 
-        У похожего блока ниже features-row-4 сделать так же."
-        Тут понятнее будет когда будешь сетки делать, оставим так пока. У features-row-4 все ок.(оставлю пока этот коммент, чтобы потом не забыть) -->
-        <div class="features-item-1">
+        <div class="features-item">
           <h2 class="features-title">ЖИЛЬЕ</h2>
           <p class="features-descript">Рекомендуем пожить в настоящем мотеле, все как в кино!</p>
         </div>
 
-        <div class="features-item-2">
+        <div class="features-item">
           <h2 class="features-title">ЕДА</h2>
           <p class="features-descript">Всегда заказывайте ФИРМЕННЫЙ БУРГЕР, Вы НЕ разочаруетесь!</p>
         </div>
 
-        <div class="features-item-3">
+        <div class="features-item">
           <h2 class="features-title">СУВЕНИРЫ</h2>
           <p class="features-descript">Не только китайского, но и местного производства!</p>
         </div>
@@ -121,13 +114,12 @@
         <h3 class="reserve-block-title">ЗАИНТЕРЕСОВАЛИСЬ?</h3>
 
         <p>
-           Укажите предполагаемые даты поездки, и мы покажем вам лучшие предложения гостиниц в седоне
+           Укажите предполагаемые даты поездки, <br/>
+           и мы покажем вам лучшие предложения гостиниц в седоне
         </p>
 
         <div class="clearfix search">
           <div class="search-title">
-          <!-- Тип кнопки неверный. Submit отправляет форму, в которой находится кнопка, на сервер, а тут формы же нет --> 
-          <!-- Лучше потом переделай на ссылку. Если не будет js, то она будет вести на страницу с формой -->
             <a href="#" class="search-push">Поиск гостиницы в седоне</a>
           </div>
 
@@ -170,7 +162,7 @@
       </section>
 
       <div class="map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7785.834603712544!2d-111.76499133115526!3d34.867778898302085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x872da132f942b00d%3A0x5548c523fa6c8efd!2z0KHQtdC00L7QvdCwLCDQkNGA0LjQt9C-0L3QsCwg0KHQqNCQ!5e0!3m2!1sru!2sru!4v1445180309685" width="1000" height="470" border ="0" allowfullscreen> </iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7785.834603712544!2d-111.76499133115526!3d34.867778898302085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x872da132f942b00d%3A0x5548c523fa6c8efd!2z0KHQtdC00L7QvdCwLCDQkNGA0LjQt9C-0L3QsCwg0KHQqNCQ!5e0!3m2!1sru!2sru!4v1445180309685" width="1200" height="470" border ="0" allowfullscreen> </iframe>
       </div>
     </main>
 
@@ -186,7 +178,7 @@
       </div>
 
       <div class="footer-copyright">
-        <a href="#" class="copyright">WEBSITE by<img src="img/icon/htmlacademy.png" width="113" height="39" alt="HTML Academy"></a>
+        <a href="#" class="copyright">WEBSITE by <img src="img/icon/htmlacademy.png" width="113" height="39" alt="HTML Academy"></a>
       </div>
     </footer>
   </div>
