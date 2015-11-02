@@ -1,6 +1,7 @@
 
 body {
-
+  width: 100%;
+  height: 100%;
   font-size: 14px;
   line-height: 1.4;
   color: #333333;
@@ -8,9 +9,11 @@ body {
   font-weight: normal;
   text-transform: uppercase;
   font-family: "PT Sans", Arial, Helvetica, sans-serif;
+  /*Еще должен быть     min-width: 768px; , чтобы сайт не становился меньше*/
 }
 
 h1 {
+  /*Не забывай про выравнивание кода ) Готовимся к сдаче, проверь везде*/
 	font-size: 21px;
   line-height: 26px;
   color: #000000;
@@ -31,6 +34,7 @@ h2 {
 
 .container {
   max-width: 1200px;
+  /* Тут цифры местами перепутаны - 768 */
   min-width: 786px;
   margin: 0 auto;
   background-color: white;
@@ -58,6 +62,7 @@ h2 {
    list-style: none;
 }
 .main-nav li {
+  /*Позиционируешь блоки с помощью float, поэтому inline-block тут совсем не нужен. Убери еще font-size: 0 у родителя*/
   display: inline-block;
   
   padding-top: 10px;
@@ -102,6 +107,8 @@ h2 {
 .logo {
   position: absolute;
   left: 50%;
+  /* Лучше напиши в пикселах margin-left, ширина лого же известна.
+  В % тут сложно высчитать и все равно значение придется менять, если изменится размер лого */
   margin-left: -5.58%;
   /*left: 44.375%;*/
 }
@@ -109,6 +116,7 @@ h2 {
 /* ------------ MAIN (INDEX)------------ */
 
 .intro {
+  /* Ошибочное значение у свойства display. ты наверно хотела указать position? */
   display: relative;
   width: 100%;
   height: 508px;
@@ -118,6 +126,7 @@ h2 {
 }
 .intro img {
   top: -56px;
+  /* Забыла тут запятую, поэтому свойства не применяются (( */
   width:100%
   height: auto;
 }
@@ -126,8 +135,11 @@ h2 {
   position: absolute;
   width: 100%;
   height: auto;
+  /* Почитай об относительных путях. Тут нужно указать путь, начинающийся на ../img */
   background: url("img/background/shape.png") no-repeat 500px 0;
+  /* Бэкграунд должен занимать все пространство (из ТЗ), поэтому либо 100% 100%, либо просто contain */
   background-size: 100%;
+  /* Не указала высоту (фиксированную), позицию от нижнего края, позицию от левого края, поэтому блок не видно. Пользуйся веб-инспектором в браузере )*/
 }
 .description h1 {
   margin-bottom: 35px;
@@ -149,8 +161,11 @@ h2 {
   overflow: hidden;
 }
 .features-img img {
+  /* Пропустила запятую после ширины, поэтому свойства не применились */
   width:100%
   height: auto;
+  /* Значение будет меняться в зависимости от размера картинки. Поэтому подгадать размеры марджина мы не сможем.
+   Не делала еще по той статье, которую я тебе скидывала?*/
   margin-top: -80px;
 }
 
@@ -164,29 +179,40 @@ h2 {
   float: right;
   width: 67%;
 }
+/*Очень похожие своства на блок .features-row-3  .features-title. Можно их как-то объединить */
 .features-row-1  .features-title {
   margin-top: 55px;
   color: #ffffff;
 }
+/*Очень похожие своства на блок .features-row-3  .features-numb. Можно их как-то объединить */
 .features-row-1  .features-numb {
   margin-top: 25px;
 }
+
+/* Очень похожие свойства на блок .features-row-3 .features-descript. Можно их как-то объединить.
+ Замечания такие же и для .features-row-3 .features-descript */
 .features-row-1  .features-descript {
+  /* Может быть, сделать боковые отступы в %? Тогда на широком и узком разрешении они тоже будут
+  меняться в зависимости от ширины родителя и текст будет переноситься более похоже на макет */
   margin-left: 55px;
   margin-right: 55px;
   margin-top: 30px;
+  /* Нижний отступ не нужен такой большой, а вдруг там будет больше текста? */
   margin-bottom: 55px;
 }
 
 
-
+/*Зачем тут высота?*/
 .features-row-2 {
   height: 330px;
 }
 .features-row-2 .features-title {
+  /*Лучше добиваться этого эффекта с помощью padding-top у .features-item.
+  У вертикальных марджинов есть опасность схлопнуться с другими */
   margin-top: 160px;
 }
 .features-row-2 .features-descript {
+  /* Тут бы горизонтальные отступы тоже сделать, чтобы текст переносился */
   margin-top: 25px;
   margin-bottom: 85px;
 }
@@ -269,6 +295,8 @@ h2 {
 }
 .search-push {
   display: inline-block;
+  /*У тебя ширина кнопки равна ширине блока-родителя .search.
+  Поэтому ей можно просто задать display:block и не прописывать ширину - она растянется под ширину родителя */
   width: 565px;
   height: 80px;
 
@@ -283,6 +311,8 @@ h2 {
 .map {
   position: relative;
   width: 100%;
+  /*Пропиши этому блоку еще overflow:hidden,
+  иначе фрейм с картой может вылазить за границы и появляется горизонтальный скролл на странице*/
 }
 .search-form {
   position: absolute;
@@ -294,17 +324,24 @@ h2 {
 .main-content {
   margin-bottom: 120px;
 }
+/*Тут блок вылез за пределы родителя (посмотри в инструметах разработчика в браузере)
+https://gyazo.com/700c6c6f6fac5532b7f62921a8202592
+потому что ты задала ему ширину 100% и горизонтальные отступы. Ширина наверно лишняя.
+И высота лишняя. А если опций будет больше? Нужно воспользоваться вертикальными паддингами*/
 .serch-options {
   width: 100%;
   height: 215px;
   padding: 0 6%;
 
+  /*Для указания пути используется косой слэш, а не обратный */
   background: #5182ad url("\img\background\background_hotels.jpg") no-repeat;
 }
 .form-filter {
   color: #ffffff;
+  /*Старайся тегам form не задавать стили, это много где считается плохим тоном =)*/
   padding: 30px 0; 
 }
+/*Тут колонки .filters и .cost-select все-таки в %, в макетах видно как они меняют размер*/
 .filters {
   float: left;
   width: 240px; 
@@ -314,13 +351,16 @@ h2 {
   width: 315px;
 }
 .serch-sortby {
+  /*Зачем inline-block и width: 100%?*/
   display: inline-block;
+  /*Блок вываливается по ширине из родителя https://gyazo.com/4764431ca3939ad36a593f8c372e766c*/
   width: 100%;
   height: 87px;
   padding: 30px 6%;
   border-bottom: 1px solid #e5e5e5;
 }
 .sort {
+  /*Забываешь указывать vertical-align для инлайн-блоковых элементов. Проверь везде*/
   display: inline-block;
 }
 .found {
@@ -354,11 +394,14 @@ h2 {
   color: #b1b1b1;
   text-decoration: none;
   /* не работает */
+  /*Свойство text-decoration-style поддерживается только в Firefox*/
+  /*Делай ссылки инлайн-блоковыми и делай у них нижний бордер*/
   text-decoration-style: dotted;
   text-decoration-color: #81b3d2;
 }
 .switch {
   display: inline-block;
+  /*Странно большой margin-right, потом видно будет зачем он тебе )*/
   margin-right: 503px;
 }
 
@@ -374,8 +417,12 @@ h2 {
   height: 120px;
   margin-top: -120px;
   /* для оформления схемы */
+  /*** Забыла тут запятые между значениями***/
   background: rgba (241 241 241 0.5);
 }
+/*Обрати внимание, в ТЗ написано: "В трёх блоках футера контент расположен по центру"
+Если померить, то там тоже колонки по 33%. Поэтому самому футеру горизонтальные паддинги не нужны,
+а трем блокам в нем нужна одинаковая ширина*/
 .footer-hashtag {
   float: left;
   width: 240px;
@@ -392,6 +439,7 @@ h2 {
   width: 150px;
 }
 .social-btn {
+  /*Ошибка в написании значения свойства*/
   display: inline-lock;
   width: 45px;
   height: 45px;
