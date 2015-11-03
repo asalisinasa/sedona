@@ -1,6 +1,8 @@
 
 body {
-
+  width: 100%;
+  height: 100%;
+  min-width: 768px;
   font-size: 14px;
   line-height: 1.4;
   color: #333333;
@@ -31,7 +33,7 @@ h2 {
 
 .container {
   max-width: 1200px;
-  min-width: 786px;
+  min-width: 768px;
   margin: 0 auto;
   background-color: white;
 }
@@ -53,13 +55,9 @@ h2 {
 .main-nav ul {
    margin: 0;
    padding: 0;
-
-   font-size: 0;
    list-style: none;
 }
 .main-nav li {
-  display: inline-block;
-  
   padding-top: 10px;
   padding-bottom: 10px;
   font-size: 14px;
@@ -96,37 +94,36 @@ h2 {
   float: right;
   width: 20%;
   text-align: right;
-  /*margin-right: 4%;*/
 }
 
 .logo {
   position: absolute;
   left: 50%;
-  margin-left: -5.58%;
-  /*left: 44.375%;*/
+  margin-left: -69px;
 }
 
 /* ------------ MAIN (INDEX)------------ */
 
 .intro {
-  display: relative;
+  position: relative;
   width: 100%;
   height: 508px;
   margin-bottom: 60px;
   overflow: hidden;
-  /*margin-bottom: 60px;*/
 }
 .intro img {
-  top: -56px;
-  width:100%
+  position: absolute;
+  top: -55px;
+  width:100%;
   height: auto;
 }
 .intro::after {
   content: "";
   position: absolute;
-  width: 100%;
+  width: 1200px;
   height: auto;
-  background: url("img/background/shape.png") no-repeat 500px 0;
+  background: url("../img/background/shape.png") no-repeat contain;
+  background-position: 100% 0;
   background-size: 100%;
 }
 .description h1 {
@@ -268,8 +265,7 @@ h2 {
 .search-title {
 }
 .search-push {
-  display: inline-block;
-  width: 565px;
+  display: block;
   height: 80px;
 
   background: #766357;
@@ -283,6 +279,7 @@ h2 {
 .map {
   position: relative;
   width: 100%;
+  overflow:hidden
 }
 .search-form {
   position: absolute;
@@ -295,91 +292,201 @@ h2 {
   margin-bottom: 120px;
 }
 .serch-options {
-  width: 100%;
-  height: 215px;
-  padding: 0 6%;
+  /*Тут блок вылез за пределы родителя (посмотри в инструметах разработчика в браузере)
+https://gyazo.com/700c6c6f6fac5532b7f62921a8202592
+потому что ты задала ему ширину 100% и горизонтальные отступы. Ширина наверно лишняя.
+И высота лишняя. А если опций будет больше? Нужно воспользоваться вертикальными паддингами
+*/
+  min-height: 185px;
+  padding: 30px 6%;
+  color: #ffffff;
 
-  background: #5182ad url("\img\background\background_hotels.jpg") no-repeat;
+  background: #5182ad url("../img/background/background_hotels.jpg") no-repeat;
 }
 .form-filter {
-  color: #ffffff;
-  padding: 30px 0; 
+  
 }
 .filters {
   float: left;
-  width: 240px; 
+  width: 33%; 
+  max-width: 250px;
 }
 .cost-select {
   float: right;
-  width: 315px;
+  width: 33%;
 }
 .serch-sortby {
-  display: inline-block;
-  width: 100%;
   height: 87px;
-  padding: 30px 6%;
+  padding: 0 6%;
+  margin-top: 30px;
   border-bottom: 1px solid #e5e5e5;
 }
 .sort {
-  display: inline-block;
 }
 .found {
-  display: inline-block;
-  margin-right: 50px;
+  float: left;
+  width: 140px;
+  margin-right: 26px;
+
   font-size: 21px;
   line-height: 26px;
   font-weight: bold;
 }
 .sort-title {
-  display: inline-block;
-  margin-right: 40px;
+  float: left;
+  width: 80px;
+  margin-right: 35px;
+
   font-size: 12px;
   line-height: 18px;
   color: #000000;
 }
 .sort-by {
-  display: inline-block;
   list-style: none;
   margin: 0px;
   padding: 0px;
+
   font-size: 12px;
   line-height: 18px;
   
 }
-.sort-by .sort-by-item {
+.sort-by-item {
   display: inline-block;
+  vertical-align: bottom;
   margin-right: 30px;
+  
 }
 .sort-by-item a {
   color: #b1b1b1;
   text-decoration: none;
-  /* не работает */
-  text-decoration-style: dotted;
-  text-decoration-color: #81b3d2;
+  border-bottom: 1px dotted #81b3d2;
+}
+.sort-by-item .active {
+  color: #81b3d2;
+  border-bottom: none;
 }
 .switch {
-  display: inline-block;
-  margin-right: 503px;
+  float: right;
+  width: 34px;
+  height: 11px;
+}
+.sort-low {
+  width: ;
+  background: #ffffff url("../img/icon/spritesheet.png") no-repeat 218px 2px;
 }
 
 
 
 .found-items {
   width: 100%;
-  padding: 0 6%;
+}
+.item {
+  display: block;
+  padding: 30 6%;
+  border-bottom: 1px solid #e5e5e5;
+}
+.item-img {
+  float: left;
+  margin-right: 30px;
+}
+.item-info {
+  float: left;
+  width: 260px;
+}
+.item-title {
+  margin-bottom: 12px;
+
+  font-size: 21px;
+  line-height: 26px;
+  color: #000000;
+}
+.item-type {
+  display: inline-block;
+  vertical-align: top;
+  width: 110px;
+  margin-right: 3px;
+  margin-bottom: 18px;
+
+  font-size: 14px;
+  line-height: 21px;
+  color: #333333;
+}
+.item-price {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 14px;
+  line-height: 21px;
+  color: #333333;
+}
+
+.item-btn {}
+.item-btn-more {
+  padding: 5px 17px;
+  background: #81b3d2;
+  margin-right: 3px;
+
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: bold;
+  color: #ffffff;
+}
+.item-btn-book {
+  padding: 5px 16px;
+  background: #766357;
+
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.item-rating {
+  float: right;
+  width: 110px;
+}
+.stars {
+  display: inline-block;
+  vertical-align: top;
+  width: 110px;
+  margin-bottom: 47px;
+}
+.rating-index {
+  display: inline-block;
+  vertical-align: top;
+  width: 110px;
+  padding: 6px 0;
+  background: #f2f2f2;
+
+  text-align: center;
+  vertical-align: middle;
+
+  font-size: 14px;
+  line-height: 21px;
+  color: #666666;
+  
 }
 /*------------ FOOTER ------------*/
 .main-footer {
-  padding: 35px 72px;
+  padding: 35px 0;
   height: 120px;
   margin-top: -120px;
-  /* для оформления схемы */
-  background: rgba (241 241 241 0.5);
+
+  background: rgba (241, 241, 241, 0.5);
 }
 .footer-hashtag {
   float: left;
-  width: 240px;
-  padding-right: 210px;
+  width: 33%;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
 }
 .footer-hashtag .bold {
   font-size: 21px;
@@ -389,25 +496,43 @@ h2 {
 
 .footer-social {
   float: left;
-  width: 150px;
+  width: 33%;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
 }
 .social-btn {
-  display: inline-lock;
+  margin: 0 6px;
+  display: inline-block;
+  vertical-align: top;
   width: 45px;
   height: 45px;
-  background: #85b3d5;
-  vertical-align: top;
+  
+  font-size: 0;
   text-decoration: none;
+
+  background: #81b3d2 url("../img/icon/spritesheet.png") no-repeat center;
+}
+.social-btn-twit {
+  background-position: 7px -228px;
+}
+.social-btn-fb {
+  background-position: 8px -112px;
+}
+.social-btn-youtb {
+  background-position: 5px -298px;
 }
 
-
 .footer-copyright {
-  float: right;
-  width: 240px;
+  float: left;
+  width: 33%;
+  display: inline-block;
+  vertical-align: middle;
 }
 .footer-copyright a {
   display: inline-block;
   vertical-align: top;
+  padding-left: ;
   text-decoration: none;
   font-size: 14px;
   line-height: 26px;
