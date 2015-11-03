@@ -2,6 +2,7 @@
 body {
   width: 100%;
   height: 100%;
+  min-width: 768px;
   font-size: 14px;
   line-height: 1.4;
   color: #333333;
@@ -9,11 +10,9 @@ body {
   font-weight: normal;
   text-transform: uppercase;
   font-family: "PT Sans", Arial, Helvetica, sans-serif;
-  /*Еще должен быть     min-width: 768px; , чтобы сайт не становился меньше*/
 }
 
 h1 {
-  /*Не забывай про выравнивание кода ) Готовимся к сдаче, проверь везде*/
 	font-size: 21px;
   line-height: 26px;
   color: #000000;
@@ -34,8 +33,7 @@ h2 {
 
 .container {
   max-width: 1200px;
-  /* Тут цифры местами перепутаны - 768 */
-  min-width: 786px;
+  min-width: 768px;
   margin: 0 auto;
   background-color: white;
 }
@@ -57,14 +55,9 @@ h2 {
 .main-nav ul {
    margin: 0;
    padding: 0;
-
-   font-size: 0;
    list-style: none;
 }
 .main-nav li {
-  /*Позиционируешь блоки с помощью float, поэтому inline-block тут совсем не нужен. Убери еще font-size: 0 у родителя*/
-  display: inline-block;
-  
   padding-top: 10px;
   padding-bottom: 10px;
   font-size: 14px;
@@ -101,45 +94,37 @@ h2 {
   float: right;
   width: 20%;
   text-align: right;
-  /*margin-right: 4%;*/
 }
 
 .logo {
   position: absolute;
   left: 50%;
-  /* Лучше напиши в пикселах margin-left, ширина лого же известна.
-  В % тут сложно высчитать и все равно значение придется менять, если изменится размер лого */
-  margin-left: -5.58%;
-  /*left: 44.375%;*/
+  margin-left: -69px;
 }
 
 /* ------------ MAIN (INDEX)------------ */
 
 .intro {
-  /* Ошибочное значение у свойства display. ты наверно хотела указать position? */
-  display: relative;
+  position: relative;
   width: 100%;
   height: 508px;
   margin-bottom: 60px;
   overflow: hidden;
-  /*margin-bottom: 60px;*/
 }
 .intro img {
-  top: -56px;
-  /* Забыла тут запятую, поэтому свойства не применяются (( */
-  width:100%
+  position: absolute;
+  top: -55px;
+  width:100%;
   height: auto;
 }
 .intro::after {
   content: "";
   position: absolute;
-  width: 100%;
+  width: 1200px;
   height: auto;
-  /* Почитай об относительных путях. Тут нужно указать путь, начинающийся на ../img */
-  background: url("img/background/shape.png") no-repeat 500px 0;
-  /* Бэкграунд должен занимать все пространство (из ТЗ), поэтому либо 100% 100%, либо просто contain */
+  background: url("../img/background/shape.png") no-repeat contain;
+  background-position: 100% 0;
   background-size: 100%;
-  /* Не указала высоту (фиксированную), позицию от нижнего края, позицию от левого края, поэтому блок не видно. Пользуйся веб-инспектором в браузере )*/
 }
 .description h1 {
   margin-bottom: 35px;
@@ -161,11 +146,8 @@ h2 {
   overflow: hidden;
 }
 .features-img img {
-  /* Пропустила запятую после ширины, поэтому свойства не применились */
   width:100%
   height: auto;
-  /* Значение будет меняться в зависимости от размера картинки. Поэтому подгадать размеры марджина мы не сможем.
-   Не делала еще по той статье, которую я тебе скидывала?*/
   margin-top: -80px;
 }
 
@@ -179,40 +161,29 @@ h2 {
   float: right;
   width: 67%;
 }
-/*Очень похожие своства на блок .features-row-3  .features-title. Можно их как-то объединить */
 .features-row-1  .features-title {
   margin-top: 55px;
   color: #ffffff;
 }
-/*Очень похожие своства на блок .features-row-3  .features-numb. Можно их как-то объединить */
 .features-row-1  .features-numb {
   margin-top: 25px;
 }
-
-/* Очень похожие свойства на блок .features-row-3 .features-descript. Можно их как-то объединить.
- Замечания такие же и для .features-row-3 .features-descript */
 .features-row-1  .features-descript {
-  /* Может быть, сделать боковые отступы в %? Тогда на широком и узком разрешении они тоже будут
-  меняться в зависимости от ширины родителя и текст будет переноситься более похоже на макет */
   margin-left: 55px;
   margin-right: 55px;
   margin-top: 30px;
-  /* Нижний отступ не нужен такой большой, а вдруг там будет больше текста? */
   margin-bottom: 55px;
 }
 
 
-/*Зачем тут высота?*/
+
 .features-row-2 {
   height: 330px;
 }
 .features-row-2 .features-title {
-  /*Лучше добиваться этого эффекта с помощью padding-top у .features-item.
-  У вертикальных марджинов есть опасность схлопнуться с другими */
   margin-top: 160px;
 }
 .features-row-2 .features-descript {
-  /* Тут бы горизонтальные отступы тоже сделать, чтобы текст переносился */
   margin-top: 25px;
   margin-bottom: 85px;
 }
@@ -294,10 +265,7 @@ h2 {
 .search-title {
 }
 .search-push {
-  display: inline-block;
-  /*У тебя ширина кнопки равна ширине блока-родителя .search.
-  Поэтому ей можно просто задать display:block и не прописывать ширину - она растянется под ширину родителя */
-  width: 565px;
+  display: block;
   height: 80px;
 
   background: #766357;
@@ -311,8 +279,7 @@ h2 {
 .map {
   position: relative;
   width: 100%;
-  /*Пропиши этому блоку еще overflow:hidden,
-  иначе фрейм с картой может вылазить за границы и появляется горизонтальный скролл на странице*/
+  overflow:hidden
 }
 .search-form {
   position: absolute;
@@ -324,109 +291,202 @@ h2 {
 .main-content {
   margin-bottom: 120px;
 }
-/*Тут блок вылез за пределы родителя (посмотри в инструметах разработчика в браузере)
+.serch-options {
+  /*Тут блок вылез за пределы родителя (посмотри в инструметах разработчика в браузере)
 https://gyazo.com/700c6c6f6fac5532b7f62921a8202592
 потому что ты задала ему ширину 100% и горизонтальные отступы. Ширина наверно лишняя.
-И высота лишняя. А если опций будет больше? Нужно воспользоваться вертикальными паддингами*/
-.serch-options {
-  width: 100%;
-  height: 215px;
-  padding: 0 6%;
+И высота лишняя. А если опций будет больше? Нужно воспользоваться вертикальными паддингами
+*/
+  min-height: 185px;
+  padding: 30px 6%;
+  color: #ffffff;
 
-  /*Для указания пути используется косой слэш, а не обратный */
-  background: #5182ad url("\img\background\background_hotels.jpg") no-repeat;
+  background: #5182ad url("../img/background/background_hotels.jpg") no-repeat;
 }
 .form-filter {
-  color: #ffffff;
-  /*Старайся тегам form не задавать стили, это много где считается плохим тоном =)*/
-  padding: 30px 0; 
+  
 }
-/*Тут колонки .filters и .cost-select все-таки в %, в макетах видно как они меняют размер*/
 .filters {
   float: left;
-  width: 240px; 
+  width: 33%; 
+  max-width: 250px;
 }
 .cost-select {
   float: right;
-  width: 315px;
+  width: 33%;
 }
 .serch-sortby {
-  /*Зачем inline-block и width: 100%?*/
-  display: inline-block;
-  /*Блок вываливается по ширине из родителя https://gyazo.com/4764431ca3939ad36a593f8c372e766c*/
-  width: 100%;
   height: 87px;
-  padding: 30px 6%;
+  padding: 0 6%;
+  margin-top: 30px;
   border-bottom: 1px solid #e5e5e5;
 }
 .sort {
-  /*Забываешь указывать vertical-align для инлайн-блоковых элементов. Проверь везде*/
   display: inline-block;
 }
 .found {
-  display: inline-block;
-  margin-right: 50px;
+  float: left;
+  width: 140px;
+  margin-right: 26px;
+
   font-size: 21px;
   line-height: 26px;
   font-weight: bold;
 }
 .sort-title {
-  display: inline-block;
-  margin-right: 40px;
+  float: left;
+  width: 80px;
+  margin-right: 35px;
+
   font-size: 12px;
   line-height: 18px;
   color: #000000;
 }
 .sort-by {
-  display: inline-block;
   list-style: none;
   margin: 0px;
   padding: 0px;
+
   font-size: 12px;
   line-height: 18px;
   
 }
-.sort-by .sort-by-item {
+.sort-by-item {
   display: inline-block;
+  vertical-align: bottom;
   margin-right: 30px;
+  
 }
 .sort-by-item a {
   color: #b1b1b1;
   text-decoration: none;
-  /* не работает */
-  /*Свойство text-decoration-style поддерживается только в Firefox*/
-  /*Делай ссылки инлайн-блоковыми и делай у них нижний бордер*/
-  text-decoration-style: dotted;
-  text-decoration-color: #81b3d2;
+  border-bottom: 1px dotted #81b3d2;
+}
+.sort-by-item .active {
+  color: #81b3d2;
+  border-bottom: none;
 }
 .switch {
   display: inline-block;
-  /*Странно большой margin-right, потом видно будет зачем он тебе )*/
   margin-right: 503px;
+}
+.sort-low {
+  width: ;
+  background: #ffffff url("../img/icon/spritesheet.png") no-repeat 218px 2px;
 }
 
 
 
 .found-items {
   width: 100%;
-  padding: 0 6%;
+}
+.item {
+  display: block;
+  padding: 30 6%;
+  border-bottom: 1px solid #e5e5e5;
+}
+.item-img {
+  float: left;
+  margin-right: 30px;
+}
+.item-info {
+  float: left;
+  width: 260px;
+}
+.item-title {
+  margin-bottom: 12px;
+
+  font-size: 21px;
+  line-height: 26px;
+  color: #000000;
+}
+.item-type {
+  display: inline-block;
+  vertical-align: top;
+  width: 110px;
+  margin-right: 3px;
+  margin-bottom: 18px;
+
+  font-size: 14px;
+  line-height: 21px;
+  color: #333333;
+}
+.item-price {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 14px;
+  line-height: 21px;
+  color: #333333;
+}
+
+.item-btn {}
+.item-btn-more {
+  padding: 5px 17px;
+  background: #81b3d2;
+  margin-right: 3px;
+
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: bold;
+  color: #ffffff;
+}
+.item-btn-book {
+  padding: 5px 16px;
+  background: #766357;
+
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.item-rating {
+  float: right;
+  width: 110px;
+}
+.stars {
+  display: inline-block;
+  vertical-align: top;
+  width: 110px;
+  margin-bottom: 47px;
+}
+.rating-index {
+  display: inline-block;
+  vertical-align: top;
+  width: 110px;
+  padding: 6px 0;
+  background: #f2f2f2;
+
+  text-align: center;
+  vertical-align: middle;
+
+  font-size: 14px;
+  line-height: 21px;
+  color: #666666;
+  
 }
 /*------------ FOOTER ------------*/
 .main-footer {
-  padding: 35px 72px;
+  padding: 35px 0;
   height: 120px;
   margin-top: -120px;
   /* для оформления схемы */
-  /*** Забыла тут запятые между значениями***/
   background: rgba (241 241 241 0.5);
 }
-/*Обрати внимание, в ТЗ написано: "В трёх блоках футера контент расположен по центру"
-Если померить, то там тоже колонки по 33%. Поэтому самому футеру горизонтальные паддинги не нужны,
-а трем блокам в нем нужна одинаковая ширина*/
 .footer-hashtag {
   float: left;
-  width: 240px;
-  padding-right: 210px;
+  width: 33%;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
 }
 .footer-hashtag .bold {
   font-size: 21px;
@@ -436,26 +496,41 @@ https://gyazo.com/700c6c6f6fac5532b7f62921a8202592
 
 .footer-social {
   float: left;
-  width: 150px;
+  width: 33%;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
 }
 .social-btn {
-  /*Ошибка в написании значения свойства*/
   display: inline-lock;
   width: 45px;
   height: 45px;
-  background: #85b3d5;
-  vertical-align: top;
+  
+  font-size: 0;
   text-decoration: none;
+
+  background: #81b3d2 url("../img/icon/spritesheet.png") no-repeat center;
+}
+.social-btn-twit {
+  background-position: 7px -228px;
+}
+.social-btn-fb {
+  background-position: 8px -112px;
+}
+.social-btn-youtb {
+  background-position: 5px -298px;
 }
 
-
 .footer-copyright {
-  float: right;
-  width: 240px;
+  float: left;
+  width: 33%;
+  display: inline-block;
+  vertical-align: middle;
 }
 .footer-copyright a {
   display: inline-block;
   vertical-align: top;
+  padding-left: ;
   text-decoration: none;
   font-size: 14px;
   line-height: 26px;
