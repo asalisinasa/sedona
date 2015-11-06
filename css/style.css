@@ -123,6 +123,9 @@ h2 {
    padding: 0;
    list-style: none;
 }
+/*1. Посмотри по pixel-perfect меню, вертикальные отступы надо поправить https://gyazo.com/c9894a82db6df0eb05bbd8b80027ea37
+  2. Ты ниже уже пишешь свойства для класса .main-nav_item. Зачем два раза? Можно в одном месте все прописать для класса .main-nav_item и все
+*/
 .main-nav li {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -156,9 +159,14 @@ h2 {
   width: 20%; 
   }
 .main-nav_info {
+  /*Чтобы сократить запись, можно написать свойства через запятую для .main-nav_info и .main-nav_photo, и для
+  .main-nav_hotels и .main-nav_map*/
   float: left;
+  /*У тебя же у всех элементов проставлена в классе .main-nav_item ширина, зачем ее дублировать еще и в доп. классах?*/
   width: 20%;
-  margin-right: 4%; 
+  /*В меню не должно быть отступов между элеметами. Теперь пункты "Фото и видео" и "Карта штата" стоят на разном расстоянии от лого, присмотрись*/
+  margin-right: 4%;
+  /*Text-align и так left по умолчанию, его не надо дублировать*/
   text-align: left;
 }
 .main-nav_photo {
@@ -238,6 +246,7 @@ h2 {
 
 .features-row-1 {
     width: 100%;
+    /*Зачем здесь прописываешь min-height, если у тебя внутренние блоки все равно ограничены по высоте и этот блок не растянется по высоте больше них?*/
     min-height: 255px;
     padding: 0;
   }
@@ -250,6 +259,7 @@ h2 {
   float: right;
   width: 67%;
 }
+/*Сузь окно бразера и посмотри, что происходит с заголовком. ему бы тоже горизонтальные отступы в % задать. Везде*/
 .features-row-1  .features-title {
   margin-top: 55px;
   color: #ffffff;
@@ -258,25 +268,32 @@ h2 {
   margin-top: 25px;
 }
 .features-row-1  .features-descript {
+  /*Где-то писала тебе, что тут лучше отступы по горизонтали указать в %*/
   margin-left: 55px;
   margin-right: 55px;
   margin-top: 30px;
+  /*Зачем такие большие отступы снизу? А если текста будет больше? И нужны ли они тут?*/
   margin-bottom: 55px;
 }
 
 
-
+/*Зачем тут ограничивать высоту? А если в элементах добавить текста?*/
 .features-row-2 {
   height: 330px;
 }
 .features-row-2 .features-title {
+  /*Если вдруг в блоке не будет заголовка, то отступ пропадет? Сделай лучше внутренний отступ у .features-item тут*/
   margin-top: 160px;
 }
 .features-row-2 .features-descript {
   margin-top: 25px;
+  /*Плохо отталкивать целую следующую секцию отступами у внутренних элементов текущей большой секции.
+  Лучше задать отступ текущей секции features-row-2, которая соприкасается со следующим крупным блоком*/
   margin-bottom: 85px;
+  /*Тут бы тоже горизонтальные отступы в %*/
   padding: 0 50px;
 }
+/*А если эти иконки склеить в спрайт и вешать потом с помощью псевдоэлементов?*/
 .features-row-2 .features-item:nth-child(1) {
   background: url("../img/icon/house.png") no-repeat 50% 45px;
 }
@@ -299,6 +316,7 @@ h2 {
   float: left;
   width: 67%;
 }
+/*То же самое про горизонтальные отступы, что и в блоках выше*/
 .features-row-3  .features-title {
   margin-top: 55px;
   color: #ffffff;
@@ -306,6 +324,9 @@ h2 {
 .features-row-3  .features-numb {
   margin-top: 25px;
 }
+/*То же самое про горизонтальные отступы, что и в блоках выше*/
+/*Вообще, у тебя отступы так похожи, зачем их стилизовать каждый раз для каждой секции отдельно?
+По крайней мере, горизонтальные точно надо объединить*/
 .features-row-3 .features-descript {
   margin-left: 55px;
   margin-right: 55px;
@@ -356,6 +377,7 @@ h2 {
   margin: 0 auto;
 }
 .search-title {
+  /*Зачем тут паддинг верхний?*/
   padding-top: 20px;
 }
 .search-push {
@@ -372,19 +394,28 @@ h2 {
 
 .search-form {
   padding: 55px;
+  /*У формы абсолют, но не указана ширина. Думаю, что самое простое решение -
+  растянуть ее по размерам контейнера-родителя с помощью left:0 и right:0, тогда паддинги тебе не будут мешать,
+  не нужно указывать фиксированной ширины и если изменятся размеры родителя, то форма подстроится под них*/
   position: absolute;
+  /*z-index тут чтобы блок встал поверх карты? Вообще, лучше его ставить у блока,
+  который находится на одном уровне с тем, который надо перекрыть. В нашем случае это .reserve-block,
+  а перекрываем мы блок .map. Так у тебя z-index хорошо отработает и в старых браузерах тоже*/
   z-index: 50;
   background: #ffffff;
+  /*Тень со странным синтаксисом, проверь. Она не отображается вокруг формы*/
   box-shadow: 
     -2px 0 2px 0 #dfdfdf,
     2px 0 2px 0 #dfdfdf,
     0 4 4px 0 #dfdfdf;
 }
 
+/*Зачем тут ширина?*/
 .select {
   width: 463px;
 }
-
+/*Попроуй кликнуть в элемент формы https://gyazo.com/e3206ce1323a2a9b80fc6b35157830dc
+Верстка разваливается*/
 .date-field {
   width: 316px;
   padding: 9px 15px;
@@ -396,7 +427,8 @@ h2 {
   font-size: 14px;
   font-weight: bold;
   line-height: 26px;
-  
+
+  /*Календарика не видно (( А должен быть*/
   background: #f2f2f2;
   border: none;
 }
@@ -407,9 +439,10 @@ h2 {
 
 .date-field:focus {
   background: #ffffff;
+  /*Лучше заранее задать бордер прозрачный, а потом его только красить. Так элементы перестанут прыгать при фокусе*/
   border: 2px solid #e5e5e5;
 }
-
+/*Элементы в форме стоят криво https://gyazo.com/5167709bd82ca55855407303d22d53c4, присмотрись*/
 .form-title {
   padding-right: 18px;
   font-family: "PT Sans", Arial, Helvetica, sans-serif;
@@ -418,6 +451,7 @@ h2 {
   line-height: 26px;
 } 
 
+/*Насколько понимаю, дальше форма еще верстается? */
 .adult-numb {
   display: inline-block;
   width: 114px;
@@ -452,6 +486,7 @@ h2 {
 .btn:hover {
   background: #669ec0;
 }
+/*Ошибка*/
 .btn: {
 }
 
@@ -477,6 +512,7 @@ h2 {
   padding: 30px 6%;
   color: #ffffff;
 
+  /*Чего-то картинка не отображается в bg*/
   background: #5182ad url("../img/background/background_hotels.jpg") no-repeat;
 }
 .form-filter {
@@ -497,12 +533,16 @@ h2 {
 }
 .sort {
   float: left;
+  /*Ширина, скорее всего, не обязательна*/
   width: 700px;
+  /*И высота тоже*/
   height: 26px;
   padding: 30px 0;
 }
 .found {
+  /*Используешь inline-block, но не указываешь vertical-align*/
   display: inline-block;
+  /*Ширина совсем не обязательна, а если текст поменяют?*/
   width: 140px;
   margin-right: 26px;
 
@@ -511,7 +551,9 @@ h2 {
   font-weight: bold;
 }
 .sort-title {
+  /*Используешь inline-block, но не указываешь vertical-align*/
   display: inline-block;
+  /*Ширина совсем не обязательна, а если текст поменяют?*/
   width: 80px;
   margin-right: 35px;
 
@@ -520,6 +562,7 @@ h2 {
   color: #000000;
 }
 .sort-by {
+  /*Используешь inline-block, но не указываешь vertical-align*/
   display: inline-block;
   list-style: none;
   margin: 0px;
@@ -549,10 +592,13 @@ h2 {
   }
 .sort-by-item .active {
   color: #81b3d2;
+  /*Лучше в таких случаях просто менять цвет бордера на прозрачный, так у тебя ничего не будет прыгать,
+  если элемент будет блочным или блочно-строчным*/
   border-bottom: none;
 }
 .switch {
   float: right;
+  /*Ширина и высота, скорее всего, не нужны*/
   width: 50px;
   height: 11px;
   padding: 37px 0;
@@ -583,14 +629,19 @@ h2 {
   padding: 0 6%;
   border-bottom: 1px solid #e5e5e5;
 }
+/*Вот тут я бы подстарховалась, указала ширину, а картинке бы указала max-width*/
 .item-img {
   float: left;
   margin-right: 30px;
+  /*Зачем прописываешь всем элементам одинаковый внутренний вертикальный отступ,
+  если его можно прописать у .item?*/
   padding-top: 30px;
   padding-bottom: 30px;
 }
 .item-info {
   float: left;
+  /*Лучше бы сделать так, чтобы этот блок растягивался на всю доступную ширину между блоками .item-img и .item-rating
+  Название может быть длинным, может появиться еще информация*/
   width: 260px;
   padding-top: 30px;
   padding-bottom: 30px;
@@ -631,6 +682,7 @@ h2 {
 }
 
 .item-btn {}
+/*Сделай кнопки инлайн-блочными*/
 .item-btn-more {
   padding: 5px 17px;
   background: #81b3d2;
@@ -681,9 +733,12 @@ h2 {
   display: inline-block;
   vertical-align: top;
   width: 110px;
+  /*Это плохо. А если этот блок захотят использовать в другом месте сайта? Будешь отменять отступ?*/
   margin-bottom: 47px;
 }
 .rating-index {
+  /*Можно не указывать тут ширину и inline-block и оставить элемент блочным,
+  тогда он растянется по ширине своего родителя .item-rating, у которго ширина уже прописана*/
   display: inline-block;
   vertical-align: top;
   width: 110px;
@@ -691,6 +746,7 @@ h2 {
   background: #f2f2f2;
 
   text-align: center;
+  /*Дублируешь одно и то же свойство у одного элемента*/
   vertical-align: middle;
 
   font-size: 14px;
@@ -703,12 +759,14 @@ h2 {
   position: relative;
   z-index: 100;
 
+  /*Футер у тебя и так растягивается на всю ширину родителя .container,
+  зачем ему  width и max-width?*/
   width: 100%;
   max-width: 1200px;
   height: 50px;
   padding: 35px 0px;
-  
-  background: rgba(241, 241, 241, 0.9) none repeat scroll 0% 0%;
+  /*Зачем в просто цвете указывать  none repeat scroll 0% 0%? Тут же нет картинки*/
+  background: rgba(254, 254, 254, 0.9) none repeat scroll 0% 0%;
 }
 .main-footer_index {
 
@@ -717,11 +775,13 @@ h2 {
 .footer-hashtag {
   float: left;
   width: 33%;
+  /*Зачем используешь inline-block, если используешь float:left?*/
   display: inline-block;
   vertical-align: middle;
   text-align: center;
 }
 .footer-hashtag .bold {
+  /*Цвет? Отличается от цвета в body*/
   font-size: 21px;
   line-height: 26px;
   font-weight: bold;
@@ -730,6 +790,7 @@ h2 {
 .footer-social {
   float: left;
   width: 33%;
+  /*Зачем используешь inline-block, если используешь float:left?*/
   display: inline-block;
   vertical-align: middle;
   text-align: center;
@@ -737,7 +798,11 @@ h2 {
 .social-btn {
   margin: 0 6px;
   display: inline-block;
-  vertical-align: top;
+  /*Вы этом случае лучше использовать такой прием:
+   height: 45px;
+   line-height: 45px;
+   Без паддинга. Тогда у тебя любая иконка встанет ровно посередине блока*/
+  padding-top: 10px;
   width: 45px;
   height: 35px;
   
@@ -756,15 +821,19 @@ h2 {
   color: rgba(241, 241, 241, 0.3); 
 }
 
+/*Картинка должна центрироваться в этом блоке*/
 .footer-copyright {
   float: left;
   width: 33%;
+  /*Зачем используешь inline-block, если используешь float:left?*/
   display: inline-block;
   vertical-align: middle;
 }
 .footer-copyright a {
   display: inline-block;
   vertical-align: top;
+
+  /*Ошибка*/
   padding-left: ;
   text-decoration: none;
   font-size: 14px;

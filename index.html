@@ -15,7 +15,7 @@
       <div class="logo">
         <a href="#"><img src="img/logo.png" width="138" height="70" alt="Седона"></a>
       </div>
-
+      <!--Посмотри через веб-инспектор, у тебя список схлопнулся. Наверно, тут clearfix было рановато ставить-->
       <nav class="main-nav clearfix">
         <ul>
           <li class="main-nav_info main-nav_item">
@@ -34,6 +34,7 @@
       </nav>
     </header>
 
+    <!-- Надо все-таки тут переделать на фоновую картинку с горами и img с текстом, как обсуждали, либо выравнивать картинку так же, как в блоках .features-img -->
     <section class="intro">
       <img src="img/background/intro.jpg" width="1200" height="773" alt="Гранд Каньон">
     </section>
@@ -125,6 +126,7 @@
 
           <div class="search-form">
             <form>
+              <!--Может, назовем эти блоки по-другому? А то очень похоже на название тега select и тем самым путает -->
               <div class="select">
                 <label class="form-title" for="date-arrive">Дата заезда:</label>
                 <input class="date-field" type="date" name="date-arrive" value="2014-04-24" id="date-arrive">
