@@ -41,17 +41,17 @@
           <div class="filters">
             <h3 class="filter-title">Инфраструктура</h3>
             <div class="filter">
-              <input type="checkbox" checked name="option-infrastr" id="filter-pools">
+              <input class="checkbox icon-check-on" type="checkbox" checked name="option-infrastr" id="filter-pools">
               <label for="filter-pools">БАССЕЙН</label>
             </div>
 
             <div class="filter">
-              <input type="checkbox" name="option-infrastr" id="filter-parking">
+              <input class="checkbox icon-check-off" type="checkbox" name="option-infrastr" id="filter-parking">
               <label for="filter-parking">ПАРКОВКА</label>
             </div>
 
             <div class="filter">
-              <input type="checkbox" name="option-infrastr" id="filter-wifi">
+              <input class="checkbox icon-check-off" type="checkbox" name="option-infrastr" id="filter-wifi">
               <label for="filter-wifi">WI-FI</label>
             </div>
           </div>
@@ -59,31 +59,34 @@
           <div class="filters">
             <h3 class="filter-title">Тип жилья:</h3>
             <div class="filter">
-              <input type="checkbox" checked name="option-house" id="filter-hotel">
+              <input class="checkbox icon-check-on" type="checkbox" checked name="option-house" id="filter-hotel">
               <label for="filter-hotel">ГОСТИНИЦА</label>
             </div>
 
             <div class="filter">
-              <input type="checkbox" checked name="option-house" id="filter-motel">
+              <input class="checkbox icon-check-on" type="checkbox" checked name="option-house" id="filter-motel">
               <label for="filter-motel">МОТЕЛЬ</label>
             </div>
 
             <div class="filter">
-               <input type="checkbox" checked name="option-house" id="filter-apartments">
+               <input class="checkbox icon-check-on" type="checkbox" checked name="option-house" id="filter-apartments">
               <label for="filter-apartments">АПАРТАМЕНТЫ</label>
             </div>
           </div>
 
-          <div class="cost-select">
-            <h3>СТОИМОСТЬ В СУТКИ (Р):</h3>
-            <div class="cost">
-              <div class="cost-left">ОТ 0</div>
-              <div class="cost-right">ДО 3000</div>
+          <div class="range-filter">
+            <h3 class="range-filter-title">СТОИМОСТЬ В СУТКИ (Р):</h3>
+            <div class="price-controls">
+              <input class="min-price"name="min-price" type="text" value="ОТ 0">
+              <input class="max-price"name="max-price" type="text" value="ДО 3000">
             </div>
 
-            <div class="cost-slider">
-              <div class="circle-1"></div>
-              <div class="circle-2"></div>
+            <div class="range-controls">
+              <div class="scale">
+                <div class="bar"></div>
+              </div>
+              <div class="toggle toggle-min"></div>
+              <div class="toggle toggle-max"></div>
             </div>
 
             <div class="search-btn">
@@ -111,7 +114,7 @@
           </div>
 
           <div class="switch">
-          <a class="icon-up-dir" href="#" title="по возрастанию"></a>
+            <a class="icon-up-dir" href="#" title="по возрастанию"></a>
             <a class="icon-down-dir active" href="#" title="по убыванию"></a>
           </div>
         </section>
@@ -121,9 +124,10 @@
             <div class="item-img"><img src="img/content/amara_resort_&_spa.jpg" width="135" height="90" alt="Amara Resort & Spa"></div>
             <div class="item-info">
               <a class="item-title" href="#">Amara Resort & Spa</a>
-              <!--А я бы сделала тут двумя колонками: тип и Подробнее, цена и Забронировать-->
-              <div class="item-type">Гостиница</div>
-              <div class="item-price">От 3500 р.</div>
+              <div class="item-description">
+                <div class="item-type">Гостиница</div>
+                <div class="item-price">От 3500 р.</div>
+              </div>
               <div class="item-btn">  
                 <a class="item-btn-more" href="#">Подробнее</a>
                 <a class="item-btn-book" href="#">Забронировать</a>
@@ -132,11 +136,11 @@
 
             <div class="item-rating">
               <div class="stars">
-                <div class="star1"></div>
-                <div class="star2"></div>
-                <div class="star3"></div>
-                <div class="star4"></div>
-                <div class="star5"></div>
+                <i class=""></i>
+                <i class="icon-star"></i>
+                <i class="icon-star"></i>
+                <i class="icon-star"></i>
+                <i class="icon-star"></i>
               </div>
               <div class="rating-index">РЕЙТИНГ: 8,5</div>
             </div>
@@ -146,21 +150,23 @@
             <div class="item-img"><img src="img/content/desert_quail_inn.jpg" width="135" height="90" alt="Desert Quail Inn"></div>
             <div class="item-info">
               <a class="item-title" href="#">Desert Quail Inn</a>
+              <div class="item-description">
                 <div class="item-type">Мотель</div>
                 <div class="item-price">От 2000 р.</div>
-                <div class="item-btn">
-                  <a class="item-btn-more" href="#">Подробнее</a>
-                  <a class="item-btn-book" href="#">Забронировать</a>
-                </div>
+              </div>
+              <div class="item-btn">
+                <a class="item-btn-more" href="#">Подробнее</a>
+                <a class="item-btn-book" href="#">Забронировать</a>
+              </div>
             </div>
 
             <div class="item-rating">
               <div class="stars">
-                <div class="star1"></div>
-                <div class="star2"></div>
-                <div class="star3"></div>
-                <div class="star4"></div>
-                <div class="star5"></div>
+                <i class=""></i>
+                <i class=""></i>
+                <i class=""></i>
+                <i class="icon-star"></i>
+                <i class="icon-star"></i>
               </div>
               <div class="rating-index">РЕЙТИНГ: 8,9</div>
             </div>
@@ -170,8 +176,10 @@
             <div class="item-img"><img src="img/content/villas_at_poco_diablo.jpg" width="135" height="90" alt="Villas at Poco Diablo"></div>
             <div class="item-info">
               <a class="item-title" href="#">Villas at Poco Diablo</a>
-              <div class="item-type">Апартаменты</div>
-              <div class="item-price">От 4000 р.</div>
+              <div class="item-description">
+                <div class="item-type">Апартаменты</div>
+                <div class="item-price">От 4000 р.</div>
+              </div>
               <div class="item-btn">
                 <a class="item-btn-more" href="#">Подробнее</a>
                 <a class="item-btn-book" href="#">Забронировать</a>
@@ -180,11 +188,11 @@
 
             <div class="item-rating">
               <div class="stars">
-                <div class="star1"></div>
-                <div class="star2"></div>
-                <div class="star3"></div>
-                <div class="star4"></div>
-                <div class="star5"></div>
+                <i class=""></i>
+                <i class=""></i>
+                <i class="icon-star"></i>
+                <i class="icon-star"></i>
+                <i class="icon-star"></i>
               </div>
               <div class="rating-index">РЕЙТИНГ: 9,2</div>
             </div>
@@ -205,7 +213,7 @@
       </section>
 
       <section class="footer-copyright">
-        <a href="#" class="copyright">WEBSITE by<img src="img/icon/htmlacademy.png" width="113" height="39" alt="HTML Academy"></a>
+        <a href="https://htmlacademy.ru/" class="copyright" target="_blank">WEBSITE by  <img src="img/icon/htmlacademy.png" width="113" height="39" alt="HTML Academy"></a>
       </section>
     </footer>
   </div>

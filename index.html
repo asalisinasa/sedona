@@ -15,9 +15,9 @@
       <div class="logo">
         <a href="#"><img src="img/logo.png" width="138" height="70" alt="Седона"></a>
       </div>
-      <!--Посмотри через веб-инспектор, у тебя список схлопнулся. Наверно, тут clearfix было рановато ставить-->
-      <nav class="main-nav clearfix">
-        <ul>
+
+      <nav class="main-nav">
+        <ul class="clearfix">
           <li class="main-nav_info main-nav_item">
             <a href="#">ИНФОРМАЦИЯ</a>
           </li><!--
@@ -34,7 +34,6 @@
       </nav>
     </header>
 
-    <!-- Надо все-таки тут переделать на фоновую картинку с горами и img с текстом, как обсуждали, либо выравнивать картинку так же, как в блоках .features-img -->
     <section class="intro">
       <img src="img/background/intro.jpg" width="1200" height="773" alt="Гранд Каньон">
     </section>
@@ -64,16 +63,19 @@
 
       <section class="features-row-2 clearfix">
         <div class="features-item">
+          <i class="features-row-2-icon icon-house"></i>
           <h2 class="features-title">ЖИЛЬЕ</h2>
           <p class="features-descript">Рекомендуем пожить в настоящем мотеле, все как в кино!</p>
         </div>
 
         <div class="features-item">
+          <i class="features-row-2-icon icon-food"></i>
           <h2 class="features-title">ЕДА</h2>
           <p class="features-descript">Всегда заказывайте ФИРМЕННЫЙ БУРГЕР, Вы НЕ разочаруетесь!</p>
         </div>
 
         <div class="features-item">
+          <i class="features-row-2-icon icon-souvenirs"></i>
           <h2 class="features-title">СУВЕНИРЫ</h2>
           <p class="features-descript">Не только китайского, но и местного производства!</p>
         </div>
@@ -95,7 +97,7 @@
         <div class="features-item">
           <h2 class="features-title">НЕБОЛЬШАЯ ПЛОЩАДЬ</h2>
           <p class="features-numb">— №3 —</p>
-          <p class="features-descript">ВСЕ достопримечательности находятся очень близко</p>
+          <p class="features-descript">ВСЕ достопримеча- <br/>тельности находятся очень близко</p>
         </div>
 
         <div class="features-item">
@@ -126,31 +128,30 @@
 
           <div class="search-form">
             <form>
-              <!--Может, назовем эти блоки по-другому? А то очень похоже на название тега select и тем самым путает -->
               <div class="select">
                 <label class="form-title" for="date-arrive">Дата заезда:</label>
                 <input class="date-field" type="date" name="date-arrive" value="2014-04-24" id="date-arrive">
               </div>
 
-              <div class="select">
+              <div class="entry-fields">
                 <label class="form-title" for="date-depart">Дата выезда:</label>
                 <input class="date-field" type="date" name="date-depart" value="2014-07-04" id="date-depart">
               </div>
 
-              <div class="select">
-                <label class="form-title" for="adult-numb">Взрослые:</label>
+              <div class="entry-fields">
                 <div class="human-numb-form">
+                  <label class="form-title" for="adult-numb">Взрослые:</label>
                   <div class="adult-numb">
-                    <button class="numb-btn-plus">+</button>
+                    <button class="numb-btn icon-minus"></button>
                     <input class="numb-field" type="text" name="numb" value="1" id="adult-numb">
-                    <button class="numb-btn-minus">-</button>
+                    <button class="numb-btn icon-plus"></button>
                   </div>
 
                   <label class="form-title" for="child-numb">Дети:</label>
                   <div class="child-numb">
-                    <button class="numb-btn-plus">+</button>
+                    <button class="numb-btn icon-minus"></button>
                     <input class="numb-field" type="text" name="numb" value="0" id="child-numb">
-                    <button class="numb-btn-minus">-</button>
+                    <button class="numb-btn icon-plus"></button>
                   </div>
                 </div>
               </div>
@@ -180,10 +181,29 @@
       </section>
 
       <div class="footer-copyright">
-        <a href="#" class="copyright">WEBSITE by <img src="img/icon/htmlacademy.png" width="113" height="39" alt="HTML Academy"></a>
+      <a href="https://htmlacademy.ru/" class="copyright" target="_blank">WEBSITE by   <img src="img/icon/htmlacademy.png" width="113" height="39" alt="HTML Academy"><!--<div class="copyright-logo"></div>--></a>
       </div>
     </footer>
   </div>
+  
+  <script>
+    var link = document.querySelector(".search-push");
+    var popup = document.querySelector(".search-form");
+    var dateArrive = popup.querySelector("[name=date-arrive]");
+
+    link.addEventListener("click", function(event) {
+      event.preventDefault();
+      popup.classList.toggle("search-form-show");
+      dateArrive.focus()
+          });
+    window.addEventListener("keydown", function(event) {
+      if (event.keyCode === 27) {
+        if (popup.classList.contains("search-form-show")) {
+          popup.classList.remove("search-form-show");
+        }
+      }
+    });
+  </script>
 </body>
 
 </html>
