@@ -63,7 +63,7 @@
 .icon-minus:before { content: '\e802'; } /* '' */
 .icon-youtube:before { content: '\f39e'; } /* '' */
 
-/* -------------------- СТИЛИ СТРАНИЦЫ -------------------- */
+/* ------------------------------------- СТИЛИ СТРАНИЦЫ ------------------------------------- */
 body {
   width: 100%;
   height: 100%;
@@ -101,13 +101,14 @@ h2 {
   min-width: 768px;
   margin: 0 auto;
   background-color: white;
+  box-shadow: 0 0 15px 5px rgba(0, 0, 1, 0.2);
 }
 .clearfix:after {
   content: "";
   display: table;
   clear: both;
 }
-/* ------------ HEADER ------------ */
+/* ----------------------------------------- HEADER ----------------------------------------- */
 .main-header {
   position: relative;
   z-index: 100;
@@ -123,18 +124,20 @@ h2 {
    padding: 0;
    list-style: none;
 }
-.main-nav li {
-  padding-top: 10px;
+.main-nav_item {
+  width: 22.8%;
+  padding-top: 13px;
   padding-bottom: 10px;
   font-size: 14px;
   line-height: 26px;
   vertical-align: top;
 }
 .main-nav a {
-   text-decoration: none;
-   font-size: 14px;
-   line-height: 26px;
-   color: #000000;
+  width: 20%; 
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 26px;
+  color: #000000;
    font-weight: bold;  
 }
 .main-nav a:hover {
@@ -152,39 +155,20 @@ h2 {
 .main-nav .active a:active {
   color: #d6d0cc;
 }
-.main-nav_item {
-  width: 20%; 
-  }
-.main-nav_info {
+.main-nav_info, .main-nav_photo {
   float: left;
-  width: 20%;
-  margin-right: 4%; 
-  text-align: left;
 }
-.main-nav_photo {
-  float: left;
-  width: 20%;
-  text-align: left;
-}
-.main-nav_hotels {
+.main-nav_hotels, .main-nav_map {
   float: right;
-  width: 20%;
   text-align: right;
 }
-.main-nav_map {
-  float: right;
-  width: 20%;
-  text-align: right;
-}
-
 .logo {
   position: absolute;
   left: 50%;
   margin-left: -69px;
 }
 
-/* ------------ MAIN (INDEX)------------ */
-
+/* --------------------------------------- MAIN (INDEX)--------------------------------------- */
 .intro {
   position: relative;
   width: 100%;
@@ -192,6 +176,8 @@ h2 {
   margin-bottom: 60px;
   overflow: hidden;
 }
+/* 1.На этот раз сохранила фон в качестве 90%, вроде получше стало. Если смотреть в макете, там и на 100% есть небольшие артефакты. Может быть будет достаточно оставить так?
+   2.Еще заметила, что при разрешении 768 фон в .intro меняет пропорции (уменьшается по высоте) из-за этого shape.png сливается с белым фоном.*/
 .intro img {
   position: absolute;
   top: -55px;
@@ -199,48 +185,59 @@ h2 {
   height: auto;
 }
 .intro:after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 57px;
-    background: url("../img/background/shape.png") no-repeat center;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 57px;
+  background: url("../img/background/shape.png") no-repeat center;
 
-    background-size: 100% 100%;
-    bottom: 0;
+  background-size: 100% 100%;
+  bottom: 0;
 }
 .description h1 {
-  margin-bottom: 35px;
+  margin-bottom: 32px;
   text-align: center;
 }
 .description p {
-  margin-bottom: 60px;
+  margin-bottom: 54px;
   text-align: center;
 }
 .features-item {
   float: left;
-  width: 33%; /* 400px*/
+  width: 33%; 
   min-height: 255px;
   text-align: center;
 }
+.features-item .features-title {
+  margin-top: 53px;
+  padding: 0 30%;
+}
+.features-numb {
+  margin-top: 25px;
+}
+.features-item .features-descript {
+  padding: 0 13%;
+  margin-top: 24px;
+  margin-bottom: 40px;
+}
 .features-img {
   position: relative;
-  width: 67%; /* 800px*/
+  width: 67%; 
   height: 255px;
   overflow: hidden;
 }
 .features-img img {
   position: absolute;
   top: 50%;
+  /*Изображения .features-img в .features-row-1 и .features-row-3 странно себя ведут в  сафари. Кажется, transform: translateY(-50%);  там не работает.*/
   transform: translateY(-50%);
   width: 100%;
   height: auto; 
 }
-
 .features-row-1 {
-    width: 100%;
-    min-height: 255px;
-    padding: 0;
-  }
+  width: 100%;
+  padding: 0;
+}
 .features-row-1 .features-item {
   max-height: 255px;
   color: #ffffff;
@@ -248,47 +245,30 @@ h2 {
 }
 .features-row-1 .features-img {
   float: right;
-  width: 67%;
 }
 .features-row-1  .features-title {
-  margin-top: 55px;
   color: #ffffff;
 }
-.features-row-1  .features-numb {
-  margin-top: 25px;
+.features-row-2 .features-item {
+  padding-top: 120px;
+  min-height: 210px;
 }
-.features-row-1  .features-descript {
-  margin-left: 55px;
-  margin-right: 55px;
-  margin-top: 30px;
-  margin-bottom: 55px;
+.features-row-2-icon {
+  display: inline-block;
+  width: 75px; 
+  height: 75px;
+  background: url("../img/icon/spritesheet.png") no-repeat;
 }
-
-
-
-.features-row-2 {
-  height: 330px;
+/* где-то тут сидит ошибка, не могу найти :( стили для .icon-house .icon-food и .icon-souvenirs не применяются*/
+.features-row-2-icon .icon-house {
+  background-position: 80px -5px;
 }
-.features-row-2 .features-title {
-  margin-top: 160px;
+.features-row-2-icon .icon-food {
+  background-position: 100px -5px;
 }
-.features-row-2 .features-descript {
-  margin-top: 25px;
-  margin-bottom: 85px;
-  padding: 0 50px;
+.features-row-2-icon .icon-souvenirs {
+  background-position: 100px -5px;
 }
-.features-row-2 .features-item:nth-child(1) {
-  background: url("../img/icon/house.png") no-repeat 50% 45px;
-}
-.features-row-2 .features-item:nth-child(2) {
-  background: url("../img/icon/food.png") no-repeat 50% 45px;
-}
-.features-row-2 .features-item:nth-child(3) {
-  background: url("../img/icon/souvenir.png") no-repeat 50% 45px;
-}
-
-
-
 .features-row-3 .features-item {
   float: left;
   max-height: 255px;
@@ -297,66 +277,31 @@ h2 {
 }
 .features-row-3 .features-img {
   float: left;
-  width: 67%;
 }
 .features-row-3  .features-title {
-  margin-top: 55px;
   color: #ffffff;
 }
-.features-row-3  .features-numb {
-  margin-top: 25px;
-}
-.features-row-3 .features-descript {
-  margin-left: 55px;
-  margin-right: 55px;
-  margin-top: 30px;
-  margin-bottom: 55px;
-}
-
 .features-row-4 {
   margin-bottom: 55px;
   background: #eeeeee;
-}
-.features-row-4 .features-item {
-  float: left;
-}
-.features-row-4  .features-title {
-  margin-top: 55px;
-}
-.features-row-4  .features-numb {
-  margin-top: 25px;
-}
-.features-row-4  .features-descript {
-  margin-left: 55px;
-  margin-right: 55px;
-  margin-top: 30px;
-  margin-bottom: 55px;
-}
-
-
-
-
-.reserve-block {
-  text-align: center;
-  background: white;
 }
 .reserve-block-title {
   font-size: 30px;
   font-weight: bold;
   line-height: 26px;
+  text-align: center;
 
   margin-bottom: 35px;
 }
 .reserve-block p {
+  z-index: 50;
   margin-bottom: 50px;
+  text-align: center;
 }
 .search {
   position: relative;
   width: 575px;
   margin: 0 auto;
-}
-.search-title {
-  padding-top: 20px;
 }
 .search-push {
   display: block;
@@ -369,28 +314,30 @@ h2 {
   line-height: 26px;
   font-weight: bold;
 }
-
 .search-form {
+  display: none;
   padding: 55px;
   position: absolute;
-  z-index: 50;
+  left: 0;
+  right: 0;
+
   background: #ffffff;
-  box-shadow: 
-    -2px 0 2px 0 #dfdfdf,
-    2px 0 2px 0 #dfdfdf,
-    0 4 4px 0 #dfdfdf;
+    box-shadow: 
+    0 0 15px 7px rgba(0, 0, 1, 0.15);
 }
-
-.select {
-  width: 463px;
+.search-form-show {
+  display: block;
 }
-
+/*1. не получается выровнять инпуты .date-field по горизонтали. Они смещены из-за того, что у текста перед ними (.form-title) разная ширина. Хотелось бы их прижать к правому краю, но не знаю как.
+  2. тут используем input type=”date”. Посмотрела на http://caniuse.com/, что он поддерживается только в опере и хроме. Проверила потом у себя, действительно, в сафари только стрелочки для регулирования есть, а в фаерфоксе совсем ничего вместо выпадающего календаря. Это нормальная практика?
+  3. В этих инпутах не знаю, как добавить иконку календаря из макета с помощью иконочного шрифта. И скрыть стандартные кнопки.*/
 .date-field {
   width: 316px;
-  padding: 9px 15px;
+  padding: 9px 14px;
   margin-bottom: 30px;
   background: #f2f2f2;
-  border: none;
+  border: 2px solid transparent;
+  outline: none;
   
   font-family: "PT Sans", Arial, Helvetica, sans-serif;
   font-size: 14px;
@@ -398,9 +345,7 @@ h2 {
   line-height: 26px;
   
   background: #f2f2f2;
-  border: none;
 }
-
 .date-field:hover {
   background: #ebebeb;
 }
@@ -409,7 +354,6 @@ h2 {
   background: #ffffff;
   border: 2px solid #e5e5e5;
 }
-
 .form-title {
   padding-right: 18px;
   font-family: "PT Sans", Arial, Helvetica, sans-serif;
@@ -417,61 +361,87 @@ h2 {
   font-weight: bold;
   line-height: 26px;
 } 
-
+.human-numb-form {
+  margin-bottom: 54px;
+}
 .adult-numb {
   display: inline-block;
   width: 114px;
   height: 38px;
+  margin-left: 20px;
+  margin-right: 53px;
+  background: #f2f2f2;
 }
-
 .child-numb {
   display: inline-block;
   width: 114px;
   height: 38px;
+  background: #f2f2f2;
 }
 .numb-field {
   width: 38px;
-}
-.numb-btn-plus {
-  width: 38px;
+  border: 0;
+  outline: 0;
+  text-align: center;
   background: #f2f2f2;
-}
 
+  font-family: "PT Sans", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 26px;
+}
+.numb-btn {
+  width: 30px;
+  background: #f2f2f2;
+  border: 0;
+  outline: 0;
+  height: inherit;
+  text-align: center;
+
+  font-size: 0;
+}
+.icon-minus:before {
+  font-size: 14px;
+  color: #a9a9a9;
+}
+.icon-minus:before:hover {
+  color: #000000;
+}
+.icon-minus:before:active {
+  color: #81b3d2;
+}
+.icon-plus:before {
+  font-size: 14px;
+  color: #a9a9a9;
+}
 .btn {
   width: 100%;
   height: 58px;
   color: #ffffff;
   background: #81b3d2;
   border: 0;
+  outline: none;
   
   font-family: "PT Sans", Arial, Helvetica, sans-serif;
   font-size: 21px;
   line-height: 26px;
   font-weight: bold;
 }
+/*для кнопок .numb-btn не получается сделать разные состояния. точнее я их задала, но почему-то не работает*/
 .btn:hover {
   background: #669ec0;
 }
-.btn: {
+.btn:active {
+  background: #5496bd;
+  color: rgba(241, 241, 241, 0.3);
 }
-
-
-
-
-
 .map {
   width: 100%;
-  overflow:hidden
+  overflow: hidden;
 }
 
-
-
-
-
-/* ------------ MAIN (HOTELS)------------ */
-.main-content-hotels {
-  position: relative;
-}
+/* -------------------------------------- MAIN (HOTELS)-------------------------------------- */
+.main-content-hotels {}
 .serch-options {
   min-height: 185px;
   padding: 30px 6%;
@@ -479,17 +449,139 @@ h2 {
 
   background: #5182ad url("../img/background/background_hotels.jpg") no-repeat;
 }
-.form-filter {
-  
+.filter-title {
+  margin-bottom: 29px;
+
+  font-family: "PT Sans", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: bold;
 }
 .filters {
   float: left;
   width: 33%; 
   max-width: 250px;
 }
-.cost-select {
+.filter {
+  margin-bottom: 29px; 
+
+  font-family: "PT Sans", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+}
+.filter:nth-child(4n) {
+  margin-bottom: 0;
+}
+/*никак не выходит стилизовать нормально чекбоксы.*/
+.checkbox {
+  vertical-align: middle;
+}
+.checkbox:not(checked) {
+  position: absolute;
+  opacity: 0;
+}
+.checkbox:not(checked) + label {
+  position: relative; 
+  padding: 0 0 0 40px; 
+  cursor: pointer;
+
+}
+.checkbox:not(checked) + label:before {
+  content: '\2610';
+  position: absolute;
+  top: -4px;
+  left: 0;
+  
+  font-size: 26px;
+  line-height: 20px;
+}
+.checkbox:checked + label:before {
+  content: '\2611';
+}
+.range-filter {
   float: right;
   width: 33%;
+}
+.range-filter-title {
+  margin-bottom: 10px;
+  
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: bold;
+}
+/*вертикальную линию между инпутами .min-price и .max-price не удается сделать.
+да и вообще есть сомнения, что в .price-controls всё верно. может быть обернуть эти инпуты еще дополнительно в дивы, чтобы предлоги ОТ и ДО не входили в поле ввода?  */
+.price-controls {
+  width: 316px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+
+  font-size: 0;
+  border: 2px solid #ffffff;
+  border-radius: 2px;
+}
+.price-controls input {
+  display: inline-block;
+  width: 158px;
+  padding: 7px 0;
+  background: none;
+  border: none;
+  outline: none;
+  
+  font-family: "PT Sans", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #ffffff;
+}
+.range-controls {
+  position: relative;
+  margin-bottom: 32px;
+  padding-left: 10px;  
+}
+.range-controls .scale {
+  width: 317px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+}
+.range-controls .bar {
+  width: 262px;
+  height: 2px;
+  background: #ffffff;
+}
+.range-controls .toggle {
+  position: absolute;
+  top: -8px;
+  width: 4px;
+  height: 4px;
+  cursor: pointer;
+  border: 8px solid #ffffff;
+  border-radius: 50%;
+  background: #ababab;
+}
+.range-controls .toggle-max {
+  left: 262px; 
+}
+.range-controls .toggle:active {
+  background: #1c4f80;
+}
+.search-btn {
+  margin-left: 95px;
+}
+.search-btn .find {
+  width: 137px;
+  height: 36px;
+  padding: 7px 0;
+  color: #ffffff;
+  background: none;
+  border: 2px solid #ffffff;
+  border-radius: 2px;
+  outline: none;
+  
+  font-family: "PT Sans", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
 }
 .serch-sortby {
   padding: 0 6%;
@@ -497,14 +589,12 @@ h2 {
 }
 .sort {
   float: left;
-  width: 700px;
-  height: 26px;
   padding: 30px 0;
 }
 .found {
   display: inline-block;
-  width: 140px;
-  margin-right: 26px;
+  vertical-align: bottom;
+  margin-right: 50px;
 
   font-size: 21px;
   line-height: 26px;
@@ -512,8 +602,8 @@ h2 {
 }
 .sort-title {
   display: inline-block;
-  width: 80px;
-  margin-right: 35px;
+  vertical-align: bottom;
+  margin-right: 40px;
 
   font-size: 12px;
   line-height: 18px;
@@ -521,19 +611,18 @@ h2 {
 }
 .sort-by {
   display: inline-block;
+  vertical-align: bottom;
   list-style: none;
   margin: 0px;
   padding: 0px;
 
   font-size: 12px;
-  line-height: 18px;
-  
+  line-height: 18px; 
 }
 .sort-by-item {
   display: inline-block;
   vertical-align: bottom;
-  margin-right: 30px;
-  
+  margin-right: 33px;
 }
 .sort-by-item a {
   color: #b1b1b1;
@@ -542,23 +631,23 @@ h2 {
 }
 .sort-by-item a:hover {
   color: #81b3d2;
-  }
+}
 .sort-by-item a:active {
   color: #000000;
-  border: none;
-  }
+  border-bottom: 1px solid transparent;
+}
 .sort-by-item .active {
   color: #81b3d2;
-  border-bottom: none;
+  border-bottom: 1px solid transparent;
 }
 .switch {
   float: right;
-  width: 50px;
-  height: 11px;
-  padding: 37px 0;
+  padding: 35px 0;
 }
 .switch a {
   display: inline-block;
+  vertical-align: bottom;
+  margin-right: -12px;
   text-decoration: none;
   color: #cccccc;
   font-size: 23px;
@@ -573,30 +662,27 @@ h2 {
 .switch a:active {
   color: #81b3d2;
 }
-
-
 .found-items {
   width: 100%;
 }
 .item {
   display: block;
-  padding: 0 6%;
+  padding: 30px 6%;
   border-bottom: 1px solid #e5e5e5;
 }
 .item-img {
   float: left;
+  width: 135px;
   margin-right: 30px;
-  padding-top: 30px;
-  padding-bottom: 30px;
+}
+.item-img img {
+  max-width: 135px;
 }
 .item-info {
   float: left;
-  width: 260px;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  width: 50%;
 }
 .item-title {
-  margin-bottom: 12px;
   text-decoration: none;
 
   font-size: 21px;
@@ -610,13 +696,15 @@ h2 {
 .item-title:active {
   color: #cacaca;
 }
-
+.item-description {
+  margin-top: 4px;
+  margin-bottom: 16px;
+}
 .item-type {
   display: inline-block;
   vertical-align: top;
   width: 110px;
   margin-right: 3px;
-  margin-bottom: 18px;
 
   font-size: 14px;
   line-height: 21px;
@@ -629,16 +717,16 @@ h2 {
   line-height: 21px;
   color: #333333;
 }
-
-.item-btn {}
+.item-btn {
+  display: inline-block;
+  vertical-align: bottom;
+}
 .item-btn-more {
   padding: 5px 17px;
   background: #81b3d2;
-  margin-right: 3px;
 
   text-decoration: none;
   text-align: center;
-  vertical-align: middle;
 
   font-size: 14px;
   line-height: 21px;
@@ -672,81 +760,85 @@ h2 {
   background: #503e33;
   color: rgba(241, 241, 241, 0.3);
 }
+.icon-star {
+  display: inline-block;
+  width: 17px;
+  margin-left: 3px;
 
+  font-size: 19px;
+  line-height: 21px;
+  color: #81b3d2;
+  text-align: right;
+}
 .item-rating {
   float: right;
   width: 110px;
 }
+
 .stars {
   display: inline-block;
-  vertical-align: top;
   width: 110px;
-  margin-bottom: 47px;
+  vertical-align: top;
+  text-align: right;
 }
+/*Горизонтальное выравнивание .rating-index к правому краю не получается сделать*/
 .rating-index {
-  display: inline-block;
-  vertical-align: top;
   width: 110px;
-  padding: 6px 0;
+  padding: 5px 0;
+  margin-top: 43px;
   background: #f2f2f2;
 
   text-align: center;
-  vertical-align: middle;
-
   font-size: 14px;
   line-height: 21px;
   color: #666666;
-  
 }
-/*------------ FOOTER ------------*/
+
+/*------------------------------------------ FOOTER ------------------------------------------*/
 .main-footer {
   position: relative;
   z-index: 100;
 
-  width: 100%;
-  max-width: 1200px;
   height: 50px;
   padding: 35px 0px;
-  
-
-  background: rgba(254, 254, 254, 0.9) none repeat scroll 0% 0%;
+  background: rgba(254, 254, 254, 0.9);
 }
 .main-footer_index {
-
   margin-top: -120px;
 }
 .footer-hashtag {
   float: left;
   width: 33%;
-  display: inline-block;
-  vertical-align: middle;
   text-align: center;
 }
 .footer-hashtag .bold {
   font-size: 21px;
   line-height: 26px;
   font-weight: bold;
+  color: #000000;
 }
-
 .footer-social {
   float: left;
   width: 33%;
-  display: inline-block;
-  vertical-align: middle;
   text-align: center;
 }
 .social-btn {
-  margin: 0 6px;
+  margin: 0 3px;
   display: inline-block;
-  padding-top: 10px;
+  /* "Вы этом случае лучше использовать такой прием:
++   height: 45px;
++   line-height: 45px;
++   Без паддинга. Тогда у тебя любая иконка встанет ровно посередине блока"
+  всё таки не выходит выровнять иконки по вертикали без паддингов.*/
+  vertical-align: middle;
   width: 45px;
-  height: 35px;
+  height: 45px;
+  line-height: 45px;
   
   font-size: 19px;
   line-height: 20px;
   color: #ffffff;
   text-decoration: none;
-
   background: #81b3d2;
 }
 .social-btn:hover {
@@ -756,17 +848,19 @@ h2 {
   background: #5496bd;
   color: rgba(241, 241, 241, 0.3); 
 }
-
+/*"Картинка должна центрироваться в этом блоке"
+  вертикально? если задать 
+    .copyright img {
+      vertical-align: middle;
+} то ничего не происходит. или я не правильно поняла?*/
 .footer-copyright {
   float: left;
   width: 33%;
-  display: inline-block;
-  vertical-align: middle;
 }
+/*на макете между надписью и лого достаточно большое пространство. с помощью white-space тут его можно подкорректировать? или может использовать <pre> ?*/
 .footer-copyright a {
   display: inline-block;
   vertical-align: top;
-  padding-left: ;
   text-decoration: none;
   font-size: 14px;
   line-height: 26px;
@@ -776,3 +870,15 @@ h2 {
   display: inline-block;
   vertical-align: top;
 }
+
+/* svg попробовала вставить вот таким способом. Чёт не выходит (в разметке добавила блок .copyright-logo)
+.copyright-logo {
+  display: inline-block;
+  width: 113px;
+  height: 39px;
+  background: #ffffff url("../img/icon/htmlacademy.svg") no-repeat 0 0;
+  background-size: 113px 39px;
+  color: black;
+}
+*/
+/* А еще посоветуй, пожалуйста, где можно почитать про то, как оживить ползунки на JS в hotels.html. На главной скрипт добавила, еще доделаю анимацию */
