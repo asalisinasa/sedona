@@ -76,7 +76,7 @@ body {
   text-transform: uppercase;
   font-family: "PT Sans", Arial, Helvetica, sans-serif;
 }
-
+/*Проверь везде выравнивание кода*/
 h1 {
 	font-size: 21px;
   line-height: 26px;
@@ -125,6 +125,7 @@ h2 {
    list-style: none;
 }
 .main-nav_item {
+  /*Зачем меняешь ширину? Все с ней правильно было*/
   width: 22.8%;
   padding-top: 13px;
   padding-bottom: 10px;
@@ -178,6 +179,9 @@ h2 {
 }
 /* 1.На этот раз сохранила фон в качестве 90%, вроде получше стало. Если смотреть в макете, там и на 100% есть небольшие артефакты. Может быть будет достаточно оставить так?
    2.Еще заметила, что при разрешении 768 фон в .intro меняет пропорции (уменьшается по высоте) из-за этого shape.png сливается с белым фоном.*/
+
+/*1. Ок, оставим так
+2. Вот поэтому и давай попоробуем положить текст отделаьно и картинку в фон отдельно с background-size*/
 .intro img {
   position: absolute;
   top: -55px;
@@ -230,6 +234,7 @@ h2 {
   position: absolute;
   top: 50%;
   /*Изображения .features-img в .features-row-1 и .features-row-3 странно себя ведут в  сафари. Кажется, transform: translateY(-50%);  там не работает.*/
+  /*Ты смотришь в Сафари на Маке?*/
   transform: translateY(-50%);
   width: 100%;
   height: auto; 
@@ -249,6 +254,7 @@ h2 {
 .features-row-1  .features-title {
   color: #ffffff;
 }
+/*Получился слишком большой верхний отступ из-за паддинга и минимальной высоты*/
 .features-row-2 .features-item {
   padding-top: 120px;
   min-height: 210px;
@@ -260,6 +266,7 @@ h2 {
   background: url("../img/icon/spritesheet.png") no-repeat;
 }
 /* где-то тут сидит ошибка, не могу найти :( стили для .icon-house .icon-food и .icon-souvenirs не применяются*/
+/*Тут лишний пробел в селекторе. А вообще, я предалагала вешать это псевдоэлементами. Это же оформление и разметка не будет загромождена*/
 .features-row-2-icon .icon-house {
   background-position: 80px -5px;
 }
@@ -322,6 +329,7 @@ h2 {
   right: 0;
 
   background: #ffffff;
+  /*А зачем переносить значение у box-shadow, где такое увидела? Интересно )*/
     box-shadow: 
     0 0 15px 7px rgba(0, 0, 1, 0.15);
 }
@@ -331,6 +339,13 @@ h2 {
 /*1. не получается выровнять инпуты .date-field по горизонтали. Они смещены из-за того, что у текста перед ними (.form-title) разная ширина. Хотелось бы их прижать к правому краю, но не знаю как.
   2. тут используем input type=”date”. Посмотрела на http://caniuse.com/, что он поддерживается только в опере и хроме. Проверила потом у себя, действительно, в сафари только стрелочки для регулирования есть, а в фаерфоксе совсем ничего вместо выпадающего календаря. Это нормальная практика?
   3. В этих инпутах не знаю, как добавить иконку календаря из макета с помощью иконочного шрифта. И скрыть стандартные кнопки.*/
+
+/*
+1. А ты задай ширину у .form-title и display нужный, они и встанут )
+2. Вообще, я бы его пока пока не рекомендовлаа использовать из-за его малой поддержки. Можно просто заменить на text
+3. Можно не париться с икночным шрифтом, а добавить календарь в спрайт и ставить background-position.
+И стандартные кнопки не получится скрыть, так что переделываем )
+*/
 .date-field {
   width: 316px;
   padding: 9px 14px;
@@ -354,7 +369,6 @@ h2 {
   background: #ffffff;
   border: 2px solid #e5e5e5;
 }
-
 .form-title {
   padding-right: 18px;
   font-family: "PT Sans", Arial, Helvetica, sans-serif;
@@ -362,7 +376,9 @@ h2 {
   font-weight: bold;
   line-height: 26px;
 } 
-
+.human-numb-form {
+  margin-bottom: 54px;
+}
 .adult-numb {
   display: inline-block;
   width: 114px;
@@ -403,6 +419,7 @@ h2 {
   font-size: 14px;
   color: #a9a9a9;
 }
+/*У тебя ховер и актив на кнопке, а не на псевдоэлементе*/
 .icon-minus:before:hover {
   color: #000000;
 }
@@ -427,6 +444,7 @@ h2 {
   font-weight: bold;
 }
 /*для кнопок .numb-btn не получается сделать разные состояния. точнее я их задала, но почему-то не работает*/
+/*Ответила выше*/
 .btn:hover {
   background: #669ec0;
 }
@@ -475,6 +493,8 @@ h2 {
 .checkbox {
   vertical-align: middle;
 }
+/*Странное решение с not. Посомтри еще раз обучалку про это https://htmlacademy.ru/intensive-participant/16/resource/79#step18
+Все равно не получается? Тебе в разметке доп. классы не нужны*/
 .checkbox:not(checked) {
   position: absolute;
   opacity: 0;
@@ -487,12 +507,14 @@ h2 {
 }
 .checkbox:not(checked) + label:before {
   content: '\2610';
+  /*Не забывай прописывать семейство иконочному шрифту. Возможно, в этом ошибка*/
   position: absolute;
   top: -4px;
   left: 0;
   
   font-size: 26px;
   line-height: 20px;
+
 }
 .checkbox:checked + label:before {
   content: '\2611';
@@ -510,6 +532,7 @@ h2 {
 }
 /*вертикальную линию между инпутами .min-price и .max-price не удается сделать.
 да и вообще есть сомнения, что в .price-controls всё верно. может быть обернуть эти инпуты еще дополнительно в дивы, чтобы предлоги ОТ и ДО не входили в поле ввода?  */
+/*Можно сделать ее бордером у одного из инпутов. Только сделать их по высоте чуть меньше, а у родителя паддинг добавить*/
 .price-controls {
   width: 316px;
   margin-bottom: 20px;
@@ -588,8 +611,6 @@ h2 {
 }
 .sort {
   float: left;
-  width: 700px;
-  height: 26px;
   padding: 30px 0;
 }
 .found {
@@ -643,12 +664,12 @@ h2 {
 }
 .switch {
   float: right;
-  width: 50px;
-  height: 11px;
-  padding: 37px 0;
+  padding: 35px 0;
 }
 .switch a {
   display: inline-block;
+  vertical-align: bottom;
+  margin-right: -12px;
   text-decoration: none;
   color: #cccccc;
   font-size: 23px;
@@ -679,11 +700,12 @@ h2 {
 .item-img img {
   max-width: 135px;
 }
+/*Чтобы построить такую сетку, как я просила, тебе нужно левой и правой колонке указать ширину и флоаты - левый и правый.
+Это уже сделано. А средней задать margin-left и margin-right на величины, равные или большие ширинам правой и левой колонок.
+То есть примерно 0 130px 0 160px. Это стандартный вариант верстки трехколоночного макета с резиновой средней колонкой*/
 .item-info {
   float: left;
-  width: 260px;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  width: 50%;
 }
 .item-title {
   text-decoration: none;
@@ -720,8 +742,11 @@ h2 {
   line-height: 21px;
   color: #333333;
 }
-
-.item-btn {}
+.item-btn {
+  display: inline-block;
+  vertical-align: bottom;
+}
+/*Лучше сделать эти кнопки блочно-строчными, чтобы выровнять по вертикали*/
 .item-btn-more {
   padding: 5px 17px;
   background: #81b3d2;
@@ -783,17 +808,14 @@ h2 {
   text-align: right;
 }
 /*Горизонтальное выравнивание .rating-index к правому краю не получается сделать*/
+/*У тебя просто там звездочка вылазит, посмотри инстументами разарботчика. */
 .rating-index {
-  display: inline-block;
-  vertical-align: top;
   width: 110px;
   padding: 5px 0;
   margin-top: 43px;
   background: #f2f2f2;
 
   text-align: center;
-  vertical-align: middle;
-
   font-size: 14px;
   line-height: 21px;
   color: #666666;
@@ -804,8 +826,6 @@ h2 {
   position: relative;
   z-index: 100;
 
-  width: 100%;
-  max-width: 1200px;
   height: 50px;
   padding: 35px 0px;
   background: rgba(254, 254, 254, 0.9);
@@ -843,6 +863,7 @@ h2 {
   line-height: 45px;
   
   font-size: 19px;
+  /*Не получается выровнять иконки из-за этого злого дублирующегося line-height )) Он все у тебя перекрыл*/
   line-height: 20px;
   color: #ffffff;
   text-decoration: none;
@@ -860,11 +881,14 @@ h2 {
     .copyright img {
       vertical-align: middle;
 } то ничего не происходит. или я не правильно поняла?*/
+
+/*Нет, тут я имела в виду горизонтальное центриование*/
 .footer-copyright {
   float: left;
   width: 33%;
 }
 /*на макете между надписью и лого достаточно большое пространство. с помощью white-space тут его можно подкорректировать? или может использовать <pre> ?*/
+/*Придется или текст обернуть в блок и дать ему отступ, или картинке задавать отступ. Только так*/
 .footer-copyright a {
   display: inline-block;
   vertical-align: top;
@@ -888,4 +912,7 @@ h2 {
   color: black;
 }
 */
+/*Не добавила в гит картику ((*/
+
 /* А еще посоветуй, пожалуйста, где можно почитать про то, как оживить ползунки на JS в hotels.html. На главной скрипт добавила, еще доделаю анимацию */
+/*Это очень сложная штука для новичков, ты уверена, что успеешь со всем? Поищу, но не факт, что есть готовое решение.*/
