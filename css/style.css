@@ -175,6 +175,7 @@ h2 {
   background-size: cover;
   overflow: hidden;
 }
+/*картинка img на макетах не меняет размеры. Ты придумала интересное решение, но его тут не использовать (*/
 .intro img {
   position: absolute;
   top: 75px;
@@ -230,11 +231,15 @@ h2 {
   top: 50%;
   /*Изображения .features-img в .features-row-1 и .features-row-3 странно себя ведут в  сафари. Кажется, transform: translateY(-50%);  там не работает.
   Смотрю с винды*/
+  /*Сафари для винды нет с 2012 года https://ru.wikipedia.org/wiki/Safari#Safari_.D0.B4.D0.BB.D1.8F_Windows
+  Поэтому если смотреть в Сафари, то надо смотреть на Маке. В критериях указано - последние версии браузеров*/
   transform: translateY(-50%);
   width: 100%;
   height: auto; 
 }
+
 .features-row-1 {
+  /*Кажется, лишние оба свойства?*/
   width: 100%;
   padding: 0;
 }
@@ -250,9 +255,14 @@ h2 {
   color: #ffffff;
 }
 .features-row-2 .features-item {
+  /*Ошибка*/
   padding-top: ;
   min-height: 330px;
 }
+/*1. Картинки смещаются https://gyazo.com/e32b7452744b1327a66d12e9d257be95 . Это на минимальном разрешении.
+Задай им просто inline-block и они будут центрироваться. Убери марджины в %, это неверно, они берут %
+от родителя, а сами размер-то не меняют, и поэтому смещаются.*/
+/*2. Зачем задаешь псевдоэлемент с этими картинками заголовку (все про те же картинки из 2.1 пункта)? А если заголовок уберут? Лучше задавать его .features-item. Так вложенность будет меньше и способ более универсальный. */
 .features-row-2 .features-title:before {
   content: "";
   display: block;
@@ -271,6 +281,7 @@ h2 {
 .features-row-2 .features-item:nth-child(3) .features-title:before {
   background-position: -14px -633px;
 }
+/*не нужно повторно задавать float:left потому что ты его задала всем .features-item ранее*/
 .features-row-3 .features-item {
   float: left;
   max-height: 255px;
@@ -330,10 +341,13 @@ h2 {
   display: block;
 }
 .date-field {
+  /*position не нужен*/
   position: relative;
   width: 333px;
   height: 38px;
+  /*Предусматривай отступы и справа https://gyazo.com/38d7a40a65434dd81b0621ea4ddc9c45*/
   padding-left: 9px;
+  /*Отступ снизу лучше задавать у блока-обертки .entry-fields*/
   margin-bottom: 30px;
   border: 2px solid transparent;
   outline: none;
@@ -352,6 +366,7 @@ h2 {
 .date-field:focus {
   background-color: #ffffff;
   background-position: 305px -339px;
+  /*Можно прописать только border-color*/
   border: 2px solid #e5e5e5;
 }
 .form-title {
@@ -398,6 +413,8 @@ h2 {
 .numb-btn {
   width: 30px;
   background: #f2f2f2;
+  /*У input, button и textarea лучше обнулять бордер через border: 0 none; Это хорошо для старях браузеров
+  Это тебе заметка на будущее, сейчас не критично*/
   border: 0;
   outline: 0;
   height: inherit;
@@ -405,6 +422,7 @@ h2 {
   font-size: 0;
   text-align: center;
 }
+/*Можно сократить запись в 2 раза и прописать состояния общему классу numb-btn*/
 .icon-minus:before {
   font-size: 14px;
   color: #a9a9a9;
@@ -483,6 +501,9 @@ h2 {
   margin-bottom: 0;
 }
 .filter input[type="checkbox"] {
+  /*На будущее: бывает, особенно в старье или в мобильных браузерах, что чекбокс перестает отрабатывать, если он невидим.
+  На этот случай еще один способ скрытия элементов: position: absolute; left: -9999px; Именно left,
+  чтобы элемент ушел за левый край экрана и не создавал горизонтальный скролл у страницы. Такой небольшой хак*/
   display: none;
 }
 .filter input[type="checkbox"] + label {
@@ -513,6 +534,8 @@ h2 {
 }
 .filter input[type="checkbox"]:checked + label:before {
   content: "\2611";
+  /*У тебя все свойства, которые ниже, уже прописаны в селекторе .filter input[type="checkbox"] + label:before
+  Зачем дублируешь?*/
   position: absolute;
   top: -4px;
   left: 0;
@@ -562,6 +585,7 @@ h2 {
   text-align: center;
   color: #ffffff;
 }
+/*А чего не irst-child? Поддержка браузерами постарше есть зато*/
 .price-controls input:nth-child(1) {
   border-right: 2px solid #ffffff;
 }
@@ -711,7 +735,8 @@ h2 {
 .item-info {
   /*float: left;
   width: 50%;*/
-  
+  /*https://gyazo.com/b9fed1495fceaf3b8f34fab497a6f93b
+  Левый отступ маловат, добавила большой заголовок и немного вылезли кнопки*/
   margin-left: 130px;
   margin-right: 150px;
 }
@@ -806,6 +831,8 @@ h2 {
   vertical-align: top;
   text-align: right;
 }
+/*Нужно прислать тебе пример звездочек, как обещала на какой-то из консультаций.
+Как ты сделала тоже можно оставить, но можно и улучшить*/
 .icon-star {
   display: inline-block;
   width: 17px;
@@ -863,9 +890,15 @@ h2 {
   width: 33%;
   text-align: center;
 }
+
 .social-btn {
   margin: 0 3px;
   display: inline-block;
+  /* "Вы этом случае лучше использовать такой прием:
++   height: 45px;
++   line-height: 45px;
++   Без паддинга. Тогда у тебя любая иконка встанет ровно посередине блока"
+  всё таки не выходит выровнять иконки по вертикали без паддингов.*/
   vertical-align: middle;
   width: 45px;
   height: 33px;
@@ -873,6 +906,7 @@ h2 {
   padding-top: 12px;
   
   font-size: 19px;
+  /*Не получается выровнять иконки из-за этого злого дублирующегося line-height )) Он все у тебя перекрыл*/
   line-height: 20px;
   color: #ffffff;
   text-decoration: none;
@@ -889,6 +923,7 @@ h2 {
   float: left;
   width: 33%;
 }
+/*Чего-то картинка все равно не по центру .footer-copyright*/
 .footer-copyright a {
   display: inline-block;
   vertical-align: top;
@@ -899,6 +934,7 @@ h2 {
   font-size: 14px;
   line-height: 26px;
   color: #000000;
+  /*Решила спрайтом сделать? ок ))*/
   background: url("../img/icon/spritesheet.png") no-repeat 77px -101px;
 }
 .footer-copyright a:hover {
