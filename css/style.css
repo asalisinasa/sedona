@@ -27,6 +27,7 @@
   speak: none;
  
   display: inline-block;
+  vertical-align: baseline;
   text-decoration: inherit;
   width: 1em;
   margin-right: .2em;
@@ -63,46 +64,53 @@
 .icon-minus:before { content: "\e802"; } /* "" */
 .icon-youtube:before { content: "\f39e"; } /* "" */
 
-/* ------------------------------------- СТИЛИ СТРАНИЦЫ ------------------------------------- */
+/* ------------------------------------- PAGE STYLES ------------------------------------- */
 body {
   width: 100%;
   height: 100%;
   min-width: 768px;
-  font-size: 14px;
-  line-height: 1.4;
+  
+  text-transform: uppercase;
+
   color: #333333;
   background-color: #f2f2f2;
+  
+  font-family: "PT Sans", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
   font-weight: normal;
-  text-transform: uppercase;
-  font-family: "PT Sans", Arial, Helvetica, sans-serif;
 }
-
-h1 {
-	font-size: 21px;
-  line-height: 26px;
-  color: #000000;
-  font-weight: bold;
+h1 {  
   text-transform: uppercase;
+  
+  color: #000000; 
+
   font-family: "PT Sans", Arial, Helvetica, sans-serif;
+  font-size: 21px;
+  line-height: 26px;
+  font-weight: bold;
 }
 h2 {
-	font-size: 21px;
-  line-height: 21px;
-  color: #000000;
-  font-weight: bold;
   text-transform: uppercase;
+  
+  color: #000000;
+  
   font-family: "PT Sans", Arial, Helvetica, sans-serif;
-
+  font-size: 21px;
+  line-height: 21px;
+  font-weight: bold;
 }
 .container {
   max-width: 1200px;
   min-width: 768px;
   margin: 0 auto;
+
   background-color: white;
   box-shadow: 0 0 15px 5px rgba(0, 0, 1, 0.2);
 }
 .clearfix:after {
   content: "";
+
   display: table;
   clear: both;
 }
@@ -110,6 +118,7 @@ h2 {
 .main-header {
   position: relative;
   z-index: 100;
+
   height: 56px;
 }
 .main-nav {
@@ -119,22 +128,26 @@ h2 {
 .main-nav ul {
   margin: 0;
   padding: 0;
+
   list-style: none;
 }
 .main-nav_item {
   width: 20%;
   padding-top: 13px;
   padding-bottom: 10px;
+
   font-size: 14px;
   line-height: 26px;
-  vertical-align: top;
 }
 .main-nav a {
   width: 20%; 
+
   text-decoration: none;
+
+  color: #000000;
+
   font-size: 14px;
   line-height: 26px;
-  color: #000000;
   font-weight: bold;  
 }
 .main-nav a:hover {
@@ -154,58 +167,72 @@ h2 {
 }
 .main-nav_info, .main-nav_photo {
   float: left;
+
+  margin-right: 2.8%; /*снова добавила сюда эти маргины) не приходит в голову другого способа выровнять пункты меню*/
 }
 .main-nav_hotels, .main-nav_map {
   float: right;
+
+  margin-left: 2.8%;
+
   text-align: right;
 }
 .logo {
   position: absolute;
   left: 50%;
+
   margin-left: -69px;
 }
 
 /* --------------------------------------- MAIN (INDEX)--------------------------------------- */
 .intro {
   position: relative;
+
   width: 100%;
   height: 508px;
   margin-bottom: 60px;
-  background: url("../img/background/intro_photo.jpg") no-repeat 0 20%;
+
+  background: #5182ad url("../img/background/intro_photo.jpg") no-repeat 0 28%;
   background-size: cover;
   overflow: hidden;
 }
-/*картинка img на макетах не меняет размеры. Ты придумала интересное решение, но его тут не использовать (*/
 .intro img {
   position: absolute;
   top: 75px;
-  width: 40%;
-  height: auto;
-  margin-left: 30%;
-  margin-right: 30%;
+  left: 50%;
+
+  width: 458px;
+  
+  margin-left: -229px;
 }
 .intro:after {
   content: "";
+
   position: absolute;
+
   width: 100%;
   height: 57px;
-  background: url("../img/background/shape.png") no-repeat center;
 
+  background: url("../img/background/shape.png") no-repeat center;
   background-size: 100% 100%;
   bottom: 0;
 }
 .description h1 {
   margin-bottom: 32px;
+
   text-align: center;
 }
 .description p {
   margin-bottom: 54px;
+
   text-align: center;
 }
 .features-item {
   float: left;
-  width: 33%; 
+  /*это чтобы .features-item занимали всю ширину контейнера. странное значение, но иначе заметные смещения по горизонтали присутствуют.*/
+  width: 33.33%; 
   min-height: 255px;
+
   text-align: center;
 }
 .features-item .features-title {
@@ -222,29 +249,26 @@ h2 {
 }
 .features-img {
   position: relative;
-  width: 67%; 
+
+  width: 66.66%; 
   height: 255px;
+
   overflow: hidden;
 }
 .features-img img {
   position: absolute;
-  top: 50%;
-  /*Изображения .features-img в .features-row-1 и .features-row-3 странно себя ведут в  сафари. Кажется, transform: translateY(-50%);  там не работает.
-  Смотрю с винды*/
-  /*Сафари для винды нет с 2012 года https://ru.wikipedia.org/wiki/Safari#Safari_.D0.B4.D0.BB.D1.8F_Windows
-  Поэтому если смотреть в Сафари, то надо смотреть на Маке. В критериях указано - последние версии браузеров*/
-  transform: translateY(-50%);
+  top: 47%;
+ 
   width: 100%;
   height: auto; 
-}
-
-.features-row-1 {
-  /*Кажется, лишние оба свойства?*/
-  width: 100%;
-  padding: 0;
+  
+  -webkit-transform: translateY(-47%); 
+      -ms-transform: translateY(-47%); 
+          transform: translateY(-47%);
 }
 .features-row-1 .features-item {
   max-height: 255px;
+
   color: #ffffff;
   background : #82b3d3;
 }
@@ -255,37 +279,35 @@ h2 {
   color: #ffffff;
 }
 .features-row-2 .features-item {
-  /*Ошибка*/
-  padding-top: ;
   min-height: 330px;
 }
-/*1. Картинки смещаются https://gyazo.com/e32b7452744b1327a66d12e9d257be95 . Это на минимальном разрешении.
-Задай им просто inline-block и они будут центрироваться. Убери марджины в %, это неверно, они берут %
-от родителя, а сами размер-то не меняют, и поэтому смещаются.*/
-/*2. Зачем задаешь псевдоэлемент с этими картинками заголовку? А если заголовок уберут?
-Лучше задавать его .features-item. Так вложенность будет меньше и способ более универсальный. */
-.features-row-2 .features-title:before {
+.features-row-2 .features-item:before {
   content: "";
-  display: block;
+
+  display: inline-block;
+  vertical-align: top;
+
   width: 75px; 
   height: 75px;
-  margin-left: 27%;
-  margin-bottom: 32px;
+  margin-top: 57px;
+
   background: url("../img/icon/spritesheet.png") no-repeat;
 }
-.features-row-2 .features-item:nth-child(1) .features-title:before {
+.features-row-2 .features-item:nth-child(1):before {
   background-position: -16px -537px;
   }
-.features-row-2 .features-item:nth-child(2) .features-title:before {
+.features-row-2 .features-item:nth-child(2):before {
   background-position: -16px -445px;
 }
-.features-row-2 .features-item:nth-child(3) .features-title:before {
+.features-row-2 .features-item:nth-child(3):before {
   background-position: -14px -633px;
 }
-/*не нужно повторно задавать float:left потому что ты его задала всем .features-item ранее*/
+.features-row-2 .features-title {
+  margin-top: 29px;
+}
 .features-row-3 .features-item {
-  float: left;
   max-height: 255px;
+
   background : #82b3d3;
   color: #ffffff;
 }
@@ -297,83 +319,127 @@ h2 {
 }
 .features-row-4 {
   margin-bottom: 55px;
+
   background: #eeeeee;
 }
+.features-row-4 .features-title {
+  margin-top: 48px;
+}
 .reserve-block-title {
+  margin-bottom: 31px;
+
   font-size: 30px;
   font-weight: bold;
   line-height: 26px;
   text-align: center;
-
-  margin-bottom: 35px;
 }
 .reserve-block p {
-  z-index: 50;
-  margin-bottom: 50px;
+  z-index: 50; /*мне кажется z-index не там стоит, его наверное нужно к .search перенести?*/
+
+  margin-bottom: 48px;
+
   text-align: center;
+  line-height: 24px;
 }
 .search {
   position: relative;
-  width: 575px;
+
+  width: 570px;
   margin: 0 auto;
 }
 .search-push {
   display: block;
-  padding: 30px 142px;
+
+  padding: 30px 139px;
+
+  text-decoration: none;
 
   background: #766357;
   color: #ffffff;
-  text-decoration: none;
+  
   font-size: 21px;
   line-height: 26px;
   font-weight: bold;
 }
+@keyframes bounce {
+  0% {transform: translateX(-2000px);}
+  50% {transform: translateX(50px);}
+  75% {transform: translateX(-5px);}
+  100% {transform: translateX(0);}
+}
+@-webkit-keyframes bounce {
+  0% {transform: translateX(-2000px);}
+  50% {transform: translateX(50px);}
+  75% {transform: translateX(-5px);}
+  100% {transform: translateX(0);}
+}
+@keyframes shake {
+  0%, 100% {transform: translateX(0);}
+  10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);}
+  20%, 40%, 60%, 80% {transform: translateX(10px);}
+}
+@-webkit-keyframes shake {
+  0%, 100% {transform: translateX(0);}
+  10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);}
+  20%, 40%, 60%, 80% {transform: translateX(10px);}
+}
+.modal-error {
+  -webkit-animation: shake 0.6s;
+  animation: shake 0.6s;
+}
 .search-form {
   display: none;
-  padding: 55px;
   position: absolute;
   left: 0;
   right: 0;
+
+  padding: 54px;
 
   background: #ffffff;
   box-shadow: 0 0 15px 7px rgba(0, 0, 1, 0.15);
 }
 .search-form-show {
   display: block;
+
+  -webkit-animation: bounce 0.8s;
+  animation: bounce 0.8s;
+}
+.entry-fields {
+  margin-bottom: 28px;
 }
 .date-field {
-  /*position не нужен*/
-  position: relative;
-  width: 333px;
-  height: 38px;
-  /*Предусматривай отступы и справа https://gyazo.com/38d7a40a65434dd81b0621ea4ddc9c45*/
-  padding-left: 9px;
-  /*Отступ снизу лучше задавать у блока-обертки .entry-fields*/
-  margin-bottom: 30px;
-  border: 2px solid transparent;
-  outline: none;
+  width: 300px;
+  height: 33px;
+  padding-left: 10px;
+  padding-right: 30px;
   
   font-family: "PT Sans", Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: bold;
   line-height: 26px;
   
-  background: #f2f2f2 url("../img/icon/spritesheet.png") no-repeat 305px 0px;
+  background: #f2f2f2 url("../img/icon/spritesheet.png") no-repeat 303px -4px;
+  border: 2px solid transparent;
+  outline: none;
 }
 .date-field:hover {
   background-color: #ebebeb;
-  background-position: 305px -243px;
+  background-position: 303px -247px;
 }
 .date-field:focus {
   background-color: #ffffff;
-  background-position: 305px -339px;
-  /*Можно прописать только border-color*/
-  border: 2px solid #e5e5e5;
+  background-position: 303px -343px;
+  border-color: #e5e5e5;
 }
 .form-title {
   display: inline-block;
+  vertical-align: middle;
+
   width: 95px;
-  padding-right: 18px;
+  padding-right: 16px;
+
+  text-align: right;
+
   font-family: "PT Sans", Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: bold;
@@ -387,23 +453,31 @@ h2 {
 }
 .adult-numb {
   display: inline-block;
+  vertical-align: middle;
+
   width: 114px;
   height: 38px;
   margin-left: 45px;
   margin-right: 44px;
+
   background: #f2f2f2;
 }
 .child-numb {
   display: inline-block;
+  vertical-align: middle;
+
   width: 114px;
   height: 38px;
+
   background: #f2f2f2;
 }
 .numb-field {
   width: 38px;
-  border: 0;
-  outline: 0;
+
   text-align: center;
+
+  border: 0 none;
+  outline: 0;
   background: #f2f2f2;
 
   font-family: "PT Sans", Arial, Helvetica, sans-serif;
@@ -412,18 +486,19 @@ h2 {
   line-height: 26px;
 }
 .numb-btn {
-  width: 30px;
-  background: #f2f2f2;
-  /*У input, button и textarea лучше обнулять бордер через border: 0 none; Это хорошо для старях браузеров
-  Это тебе заметка на будущее, сейчас не критично*/
-  border: 0;
-  outline: 0;
+  width: 33px;
   height: inherit;
 
-  font-size: 0;
   text-align: center;
+
+  background: #f2f2f2;
+  border: 0 none;
+  outline: 0;
+  
+  font-size: 0;
 }
-/*Можно сократить запись в 2 раза и прописать состояния общему классу numb-btn*/
+/*Можно сократить запись в 2 раза и прописать состояния общему классу numb-btn
+  (так не выходит, ведь иконки шрифтовые, им можно поменять цвет текста. а для кнопки numb-btn не получится) */
 .icon-minus:before {
   font-size: 14px;
   color: #a9a9a9;
@@ -444,12 +519,13 @@ h2 {
 .icon-plus:active:before {
   color: #81b3d2;
 }
-.btn {
+.submit-btn {
   width: 100%;
   height: 58px;
+
   color: #ffffff;
   background: #81b3d2;
-  border: 0;
+  border: 0 none;
   outline: none;
   
   font-family: "PT Sans", Arial, Helvetica, sans-serif;
@@ -457,29 +533,31 @@ h2 {
   line-height: 26px;
   font-weight: bold;
 }
-.btn:hover {
-   background: #669ec0;
- }  
-.btn:active {
+.submit-btn:hover {
+  background: #669ec0;
+}  
+.submit-btn:active {
   background: #5496bd;
   color: rgba(241, 241, 241, 0.3); 
 }
 .map {
   width: 100%;
+  height: 594px;
+
   overflow: hidden;
+  background: url("../img/content/map.jpg") no-repeat;
 }
 
 /* -------------------------------------- MAIN (HOTELS)-------------------------------------- */
-.main-content-hotels {}
 .serch-options {
   min-height: 165px;
   padding: 25px 6%;
-  color: #ffffff;
 
+  color: #ffffff;
   background: #5182ad url("../img/background/background_hotels.jpg") no-repeat;
 }
 .filter-title {
-  margin-bottom: 29px;
+  margin-bottom: 27px;
 
   font-family: "PT Sans", Arial, Helvetica, sans-serif;
   font-size: 16px;
@@ -488,11 +566,15 @@ h2 {
 }
 .filters {
   float: left;
+
   width: 33%; 
   max-width: 250px;
 }
+.filters:nth-child(2) {
+  margin-left: 5px;
+}
 .filter {
-  margin-bottom: 29px; 
+  margin-bottom: 25px; 
 
   font-family: "PT Sans", Arial, Helvetica, sans-serif;
   font-size: 14px;
@@ -502,30 +584,31 @@ h2 {
   margin-bottom: 0;
 }
 .filter input[type="checkbox"] {
-  /*На будущее: бывает, особенно в старье или в мобильных браузерах, что чекбокс перестает отрабатывать, если он невидим.
-  На этот случай еще один способ скрытия элементов: position: absolute; left: -9999px; Именно left,
-  чтобы элемент ушел за левый край экрана и не создавал горизонтальный скролл у страницы. Такой небольшой хак*/
-  display: none;
+  position: absolute; 
+  left: -9999px;
 }
 .filter input[type="checkbox"] + label {
   position: relative;
 
   display: inline-block;
+  vertical-align: bottom;
+
   padding-left: 40px;
 
-  vertical-align: top;
   cursor: pointer;
 }
 .filter input[type="checkbox"] + label:before {
   content: "\2610";
+
   position: absolute;
-  top: -4px;
+  top: 1px;
   left: 0;
   
+  color: #ebebeb;
+
   font-family: "symbols-sedona";
   font-size: 26px;
   line-height: 20px;
-  color: #ebebeb;
 }
 .filter input[type="checkbox"] + label:hover:before {
   color: #ffffff;
@@ -535,16 +618,6 @@ h2 {
 }
 .filter input[type="checkbox"]:checked + label:before {
   content: "\2611";
-  /*У тебя все свойства, которые ниже, уже прописаны в селекторе .filter input[type="checkbox"] + label:before
-  Зачем дублируешь?*/
-  position: absolute;
-  top: -4px;
-  left: 0;
-  
-  font-family: "symbols-sedona";
-  font-size: 26px;
-  line-height: 20px;
-  color: #ebebeb;
 }
 .filter input[type="checkbox"]:checked + label:hover:before {
   color: #ffffff;
@@ -554,7 +627,9 @@ h2 {
 }
 .range-filter {
   float: right;
+
   width: 33%;
+  margin-right: -20px;
 }
 .range-filter-title {
   margin-bottom: 10px;
@@ -563,18 +638,25 @@ h2 {
   line-height: 21px;
 }
 .price-controls {
-  width: 320px;
+  width: 315px;
   padding: 5px 0;
   margin-bottom: 20px;
   margin-left: 10px;
 
-  font-size: 0;
   border: 2px solid #ffffff;
   border-radius: 2px;
+
+  font-size: 0;
 }
 .price-controls input {
   display: inline-block;
-  width: 157px;
+
+  width: 156px;
+
+  text-transform: uppercase;
+  text-align: center;
+  
+  color: #ffffff;
   background: none;
   border: none;
   outline: none;
@@ -582,41 +664,46 @@ h2 {
   font-family: "PT Sans", Arial, Helvetica, sans-serif;
   font-size: 14px;
   line-height: 21px;
-  text-transform: uppercase;
-  text-align: center;
-  color: #ffffff;
 }
-/*А чего не irst-child? Поддержка браузерами постарше есть зато*/
-.price-controls input:nth-child(1) {
+.price-controls input:first-child {
   border-right: 2px solid #ffffff;
 }
 .range-controls {
   position: relative;
+
   margin-bottom: 32px;
   padding-left: 10px;  
 }
 .range-controls .scale {
   width: 317px;
   height: 2px;
+
   background: rgba(255, 255, 255, 0.3);
 }
 .range-controls .bar {
   width: 262px;
   height: 2px;
+
   background: #ffffff;
 }
-.range-controls .toggle {
+.bar .toggle {
   position: absolute;
   top: -8px;
+
   width: 4px;
   height: 4px;
+
   cursor: pointer;
+
   border: 8px solid #ffffff;
   border-radius: 50%;
   background: #ababab;
 }
-.range-controls .toggle-max {
-  left: 262px; 
+.bar .toggle-max {
+  right: 0px;
+}
+.bar .toggle-min {
+  left: 0px;
 }
 .range-controls .toggle:active {
   background: #1c4f80;
@@ -628,6 +715,7 @@ h2 {
   width: 137px;
   height: 36px;
   padding: 7px 0;
+
   color: #ffffff;
   background: none;
   border: 2px solid #ffffff;
@@ -640,17 +728,20 @@ h2 {
 }
 .serch-sortby {
   padding: 0 6%;
+
   border-bottom: 1px solid #e5e5e5;
 }
 .sort {
   float: left;
+
   padding: 30px 0;
 }
 .found {
   display: inline-block;
   vertical-align: bottom;
-  margin-right: 43px;
 
+  margin-right: 43px;
+  
   font-size: 21px;
   line-height: 26px;
   font-weight: bold;
@@ -658,18 +749,22 @@ h2 {
 .sort-title {
   display: inline-block;
   vertical-align: bottom;
-  margin-right: 38px;
 
+  margin-right: 39px;
+  
+  color: #000000;
+  
   font-size: 12px;
   line-height: 18px;
-  color: #000000;
 }
 .sort-by {
   display: inline-block;
   vertical-align: bottom;
-  list-style: none;
+
   margin: 0px;
   padding: 0px;
+
+  list-style: none;
 
   font-size: 12px;
   line-height: 18px; 
@@ -677,11 +772,13 @@ h2 {
 .sort-by-item {
   display: inline-block;
   vertical-align: bottom;
+
   margin-right: 30px;
 }
 .sort-by-item a {
-  color: #b1b1b1;
   text-decoration: none;
+
+  color: #b1b1b1;
   border-bottom: 1px dotted #81b3d2;
 }
 .sort-by-item a:hover {
@@ -697,14 +794,20 @@ h2 {
 }
 .switch {
   float: right;
-  padding: 35px 0;
+
+  padding: 32px 0;
 }
 .switch a {
   display: inline-block;
   vertical-align: bottom;
+
   margin-right: -12px;
+
   text-decoration: none;
+
   color: #cccccc;
+  
+  font-family: "symbols-sedona";
   font-size: 23px;
   line-height: 20px;
 }
@@ -722,11 +825,14 @@ h2 {
 }
 .item {
   display: block;
-  padding: 30px 6%;
+
+  padding: 28px 6%;
+
   border-bottom: 1px solid #e5e5e5;
 }
 .item-img {
   float: left;
+
   width: 135px;
   margin-right: 30px;
 }
@@ -734,20 +840,22 @@ h2 {
   max-width: 135px;
 }
 .item-info {
-  /*float: left;
-  width: 50%;*/
-  /*https://gyazo.com/b9fed1495fceaf3b8f34fab497a6f93b
-  Левый отступ маловат, добавила большой заголовок и немного вылезли кнопки*/
-  margin-left: 130px;
+  margin-left: 165px;
   margin-right: 150px;
 }
 .item-title {
-  text-decoration: none;
+  display: inline-block;
+  vertical-align: top;
 
+  margin-top: -4px;
+
+  text-decoration: none;
+  
+  color: #000000;
+  
   font-size: 21px;
   line-height: 26px;
   font-weight: bold;
-  color: #000000;
 }
 .item-title:hover {
   color: #81b3d2;
@@ -756,40 +864,45 @@ h2 {
   color: #cacaca;
 }
 .item-description {
-  margin-top: 4px;
-  margin-bottom: 8px;
+  margin-top: 9px;
+  margin-bottom: 14px;
 }
 .item-type {
   display: inline-block;
   vertical-align: top;
+
   width: 110px;
   margin-right: 3px;
-
+  
+  color: #333333;
+  
   font-size: 14px;
   line-height: 21px;
-  color: #333333;
 }
 .item-price {
   display: inline-block;
   vertical-align: top;
+  
+  color: #333333;
+
   font-size: 14px;
   line-height: 21px;
-  color: #333333;
 }
 .item-btn-more {
   display: inline-block;
   vertical-align: bottom;
 
-  padding: 5px 17px;
-  background: #81b3d2;
+  padding: 3px 17px;
 
   text-decoration: none;
   text-align: center;
-
+  
+  color: #ffffff;
+  background: #81b3d2;
+  
   font-size: 14px;
   line-height: 21px;
   font-weight: bold;
-  color: #ffffff;
 }
 .item-btn-more:hover {
   background: #669ec0;
@@ -802,13 +915,13 @@ h2 {
   display: inline-block;
   vertical-align: bottom;
 
-  padding: 5px 16px;
+  padding: 3px 17px;
   background: #766357;
 
   text-decoration: none;
   text-align: center;
   vertical-align: middle;
-
+  
   font-size: 14px;
   line-height: 21px;
   font-weight: bold;
@@ -823,22 +936,26 @@ h2 {
 }
 .item-rating {
   float: right;
+
   width: 140px;
 }
 .stars {
   display: inline-block;
+  vertical-align: top;
+
   width: 130px;
   margin-left: 5px;
-  vertical-align: top;
+  
   text-align: right;
 }
-/*Нужно прислать тебе пример звездочек, как обещала на какой-то из консультаций.
-Как ты сделала тоже можно оставить, но можно и улучшить*/
 .icon-star {
   display: inline-block;
+  vertical-align: top;
+
   width: 17px;
   margin-left: 3px;
-
+  
+  font-family: "symbols-sedona";
   font-size: 19px;
   line-height: 21px;
   color: #81b3d2;
@@ -852,15 +969,17 @@ h2 {
   vertical-align: bottom;
 
   width: 110px;
-  padding: 5px 0;
+  padding: 4px 2px;
   margin-left: 30px;
   margin-top: 43px;
+  
+  text-align: center;
+
+  color: #666666;
   background: #f2f2f2;
 
-  text-align: center;
   font-size: 14px;
   line-height: 21px;
-  color: #666666;
 }
 
 /*------------------------------------------ FOOTER ------------------------------------------*/
@@ -870,6 +989,7 @@ h2 {
 
   height: 50px;
   padding: 35px 0px;
+
   background: rgba(254, 254, 254, 0.9);
 }
 .main-footer_index {
@@ -877,41 +997,45 @@ h2 {
 }
 .footer-hashtag {
   float: left;
+
   width: 33%;
+
   text-align: center;
 }
 .footer-hashtag .bold {
+  display: inline-block;
+
+  margin-top: 11px;
+
+  color: #000000;
+
   font-size: 21px;
   line-height: 26px;
   font-weight: bold;
-  color: #000000;
 }
 .footer-social {
   float: left;
+
   width: 33%;
+
   text-align: center;
 }
-
 .social-btn {
-  margin: 0 3px;
   display: inline-block;
-  /* "Вы этом случае лучше использовать такой прием:
-+   height: 45px;
-+   line-height: 45px;
-+   Без паддинга. Тогда у тебя любая иконка встанет ровно посередине блока"
-  всё таки не выходит выровнять иконки по вертикали без паддингов.*/
   vertical-align: middle;
+
   width: 45px;
-  height: 33px;
-  line-height: 45px;
-  padding-top: 12px;
-  
-  font-size: 19px;
-  /*Не получается выровнять иконки из-за этого злого дублирующегося line-height )) Он все у тебя перекрыл*/
-  line-height: 20px;
-  color: #ffffff;
+  height: 45px;
+  margin: 0 2px;
+
   text-decoration: none;
+
+  color: #ffffff;
   background: #81b3d2;
+  
+  font-family: "symbols-sedona";
+  font-size: 19px;
+  line-height: 45px;
 }
 .social-btn:hover {
   background: #669ec0;
@@ -922,25 +1046,48 @@ h2 {
 }
 .footer-copyright {
   float: left;
+
   width: 33%;
 }
-/*Чего-то картинка все равно не по центру .footer-copyright*/
 .footer-copyright a {
   display: inline-block;
   vertical-align: top;
-  width: 200px;
-  height: 40px;
 
+  width: 306px;
+  height: 40px;
+  margin-top: 9px;
+  
+  text-align: center;
   text-decoration: none;
+  
+  color: #000000;
+  background: url("../img/icon/spritesheet.png") no-repeat 188px -101px;
+
   font-size: 14px;
   line-height: 26px;
-  color: #000000;
-  /*Решила спрайтом сделать? ок ))*/
-  background: url("../img/icon/spritesheet.png") no-repeat 77px -101px;
 }
 .footer-copyright a:hover {
-  background-position: 77px -150px;
+  background-position: 188px -150px;
 }
 .footer-copyright a:active {
-  background-position: 77px -199px;
+  background-position: 188px -199px;
 }
+
+/*
+1. Вот по этим критериям не всё хорошо:
+    Б5. Документ проходит проверку на валидность
+
+    (валидатор ругается на знаки амперсанда)
+
+    Б11. При наполнении контентом (как в макете) элементы каждой страницы соответствуют макету, 
+    но допускаются:
+    Различия в 5 пикселей по высоте (при расстояниях более 30 пикселей) и 2 пикселя по ширине;
+
+    (практически всё выровняла, с футером есть сложности и с параграфами на первой странице. не знаю, стоит 
+    ли им добавлять <br> чтобы всё встало красиво. если так сделаю, это будет противоречить другому критерию)
+
+    Б12. Вёрстка идентично отображается в последних версиях браузеров Chrome, Opera, Firefox, Safari, а 
+    также в Internet Explorer 10+.
+
+    (А если мака нет, для проверки отображения в сафари нужно использовать эмуляторы?)
+*/
