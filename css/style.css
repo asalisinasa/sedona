@@ -64,6 +64,29 @@
 .icon-minus:before { content: "\e802"; } /* "" */
 .icon-youtube:before { content: "\f39e"; } /* "" */
 
+
+@-webkit-keyframes bounce {
+  0% {transform: translateX(-200px);}
+  50% {transform: translateX(50px);}
+  75% {transform: translateX(-5px);}
+  100% {transform: translateX(0);}
+}
+@keyframes bounce {
+  0% {transform: translateY(-200px);}
+  50% {transform: translateY(50px);}
+  75% {transform: translateY(-5px);}
+  100% {transform: translateY(0);}
+}
+@-webkit-keyframes shake {
+  0%, 100% {transform: translateX(0);}
+  10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);}
+  20%, 40%, 60%, 80% {transform: translateX(10px);}
+}
+@keyframes shake {
+  0%, 100% {transform: translateX(0);}
+  10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);}
+  20%, 40%, 60%, 80% {transform: translateX(10px);}
+}
 /* ------------------------------------- PAGE STYLES ------------------------------------- */
 body {
   width: 100%;
@@ -162,7 +185,7 @@ h2 {
 .main-nav_item.active a:hover {
   color: #604e43;
 }
-.main-nav_item.activek a:active {
+.main-nav_item.active a:active {
   color: #d6d0cc;
 }
 .main-nav_info, .main-nav_photo {
@@ -240,14 +263,14 @@ h2 {
 
   text-align: center;
 }
-.features-item .features-title {
+.features-title {
   margin-top: 54px;
-  padding: 0 24%;
+  padding: 0 26%;
 }
 .features-numb {
   margin-top: 25px;
 }
-.features-item .features-descript {
+.features-descript {
   padding: 0 11%;
   margin-top: 24px;
   margin-bottom: 40px;
@@ -382,30 +405,12 @@ h2 {
 
   background: #F7F8E0 url("../img/content/map.jpg") no-repeat;
 }
-@-webkit-keyframes bounce {
-  0% {transform: translateX(-200px);}
-  50% {transform: translateX(50px);}
-  75% {transform: translateX(-5px);}
-  100% {transform: translateX(0);}
-}
-@keyframes bounce {
-  0% {transform: translateY(-200px);}
-  50% {transform: translateY(50px);}
-  75% {transform: translateY(-5px);}
-  100% {transform: translateY(0);}
-}
-@-webkit-keyframes shake {
-  0%, 100% {transform: translateX(0);}
-  10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);}
-  20%, 40%, 60%, 80% {transform: translateX(10px);}
-}
-@keyframes shake {
-  0%, 100% {transform: translateX(0);}
-  10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);}
-  20%, 40%, 60%, 80% {transform: translateX(10px);}
-}
 .search-form {
   display: none;
+
+  position: absolute;
+  left: 50%;
+  margin-left: -285px;
 
   width: 461px;
   padding: 54px;
@@ -415,10 +420,6 @@ h2 {
 }
 .search-form-show {
   display: block;
-
-  position: absolute;
-  left: 50%;
-  margin-left: -285px;
 
   -webkit-animation: bounce 0.8s;
         animation: bounce 0.8s;
@@ -632,12 +633,10 @@ h2 {
 .range-filter {
   float: right;
 
-  width: 33%;
-  margin-right: -1.6%;
+  width: 30%;
 }
 .range-filter-title {
   margin-bottom: 10px;
-  margin-left: 6%;
   
   font-size: 16px;
   line-height: 21px;
@@ -645,7 +644,6 @@ h2 {
 .price-controls {
   padding: 5px 0;
   margin-bottom: 20px;
-  margin-left: 9.5%;
 
   border: 2px solid #ffffff;
   border-radius: 2px;
@@ -675,7 +673,7 @@ h2 {
   position: relative;
 
   margin-bottom: 32px;
-  margin-left: 11.5%; 
+  margin-left: 2.5%;
 }
 .range-controls .scale {
   width: 100%;
@@ -717,7 +715,7 @@ h2 {
   background: #1c4f80;
 }
 .search-btn {
-  margin-left: 6.5%;
+  margin-left: -4%;
 
   text-align: center;
 }
@@ -795,7 +793,7 @@ h2 {
   color: #81b3d2;
 }
 .sort-by-item a:active {
-  color: #000000;
+  color: #81b3d2;
   border-bottom: 1px solid transparent;
 }
 .sort-by-item .active {
@@ -817,15 +815,20 @@ h2 {
 
   color: #cccccc;
   
-  font-family: "symbols-sedona";
   font-size: 23px;
   line-height: 20px;
+}
+.switch a:hover {
+  color: #81b3d2;
+}
+.switch a:active {
+  color: #000000;
 }
 .switch .active {
   color: #81b3d2;
 }
-.switch a:hover {
-  color: #000000;
+.switch .active:hover {
+  color: #81b3d2;
 }
 .found-items {
   width: 100%;
@@ -961,7 +964,6 @@ h2 {
   width: 17px;
   margin-left: 3px;
   
-  font-family: "symbols-sedona";
   font-size: 19px;
   line-height: 21px;
   color: #81b3d2;
@@ -1010,6 +1012,7 @@ h2 {
 }
 .footer-hashtag .bold {
   display: inline-block;
+  vertical-align: middle;
 
   margin-top: 10px;
 
@@ -1039,7 +1042,6 @@ h2 {
   color: #ffffff;
   background: #81b3d2;
   
-  font-family: "symbols-sedona";
   font-size: 19px;
   line-height: 48px;
 }
