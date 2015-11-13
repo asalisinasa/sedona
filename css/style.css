@@ -271,7 +271,7 @@ h2 {
   margin-top: 25px;
 }
 .features-descript {
-  padding: 0 11%;
+  padding: 0 20%;
   margin-top: 24px;
   margin-bottom: 40px;
 
@@ -819,10 +819,10 @@ h2 {
   line-height: 20px;
 }
 .switch a:hover {
-  color: #81b3d2;
+  color: #000000;
 }
 .switch a:active {
-  color: #000000;
+  color: #81b3d2;
 }
 .switch .active {
   color: #81b3d2;
